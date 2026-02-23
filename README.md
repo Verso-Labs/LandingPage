@@ -12,6 +12,6 @@ Push to `main` and enable GitHub Pages (Settings > Pages > Source: `main` branch
 
 ## Customize
 
-- **Accent color**: Change `#4CAF50` in the `tailwind.config` block inside `index.html`
+- **Accent color**: Change the `accent` color in the `tailwind.config` block inside `index.html`
 - **CTA links**: Search for `href="#"` and replace with real URLs
 - **Content**: Edit text directly in the HTML sections
