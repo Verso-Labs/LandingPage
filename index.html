@@ -20,29 +20,7 @@
       }
     }
   </script>
-  <style>
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-12px); }
-    }
-    @keyframes fade-in-up {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes pulse-glow {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(59,219,141,0.4); }
-      50% { box-shadow: 0 0 24px 6px rgba(59,219,141,0.15); }
-    }
-    .animate-float { animation: float 5s ease-in-out infinite; }
-    .animate-fade-in-up { animation: fade-in-up 0.7s ease-out forwards; }
-    .animate-pulse-glow { animation: pulse-glow 2.5s ease-in-out infinite; }
-    .scroll-animate { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
-    .scroll-animate.visible { opacity: 1; transform: translateY(0); }
-    details summary::-webkit-details-marker { display: none; }
-    details summary { list-style: none; }
-    details summary .chevron { transition: transform 0.2s; }
-    details[open] summary .chevron { transform: rotate(180deg); }
-  </style>
+  <link rel="stylesheet" href="/styles.css">
 </head>
 <body class="bg-white text-slate-900 antialiased">
 
@@ -410,7 +388,8 @@
           <div class="font-semibold text-white text-sm mb-3">Company</div>
           <a href="#" class="block text-sm mb-2 hover:text-white transition">About</a>
           <a href="#" class="block text-sm mb-2 hover:text-white transition">Blog</a>
-          <a href="#" class="block text-sm hover:text-white transition">Careers</a>
+          <a href="#" class="block text-sm mb-2 hover:text-white transition">Careers</a>
+          <a href="/support" class="block text-sm hover:text-white transition">Support</a>
         </div>
         <div>
           <div class="font-semibold text-white text-sm mb-3">Legal</div>
