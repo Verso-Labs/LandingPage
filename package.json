@@ -1,0 +1,26 @@
+{
+  "name": "website---verso.ai",
+  "version": "1.0.0",
+  "description": "Static one-pager for [Verso AI](https://verso-ai.com) — professional presentations from prompts.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "live-server --port=8080 --open=/ --watch=.",
+    "start": "npm run dev",
+    "serve": "live-server --port=8080"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Verso-Labs/LandingPage.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Verso-Labs/LandingPage/issues"
+  },
+  "homepage": "https://github.com/Verso-Labs/LandingPage#readme",
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+}
