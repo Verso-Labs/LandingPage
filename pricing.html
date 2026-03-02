@@ -8,7 +8,7 @@
   <link rel="icon" href="logo_flat_red.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -28,6 +28,15 @@
   </script>
   <style>
     body {
+      font-family: 'Poppins', sans-serif;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Spectral', serif;
+    }
+    nav .text-xl {
+      font-family: 'Spectral', serif;
+    }
+    footer .text-lg, footer .font-bold {
       font-family: 'Spectral', serif;
     }
     @keyframes fade-in-up {
@@ -57,10 +66,11 @@
       </a>
       <div class="hidden md:flex items-center gap-6 text-base font-medium text-slate-600">
         <a href="index.html#hero" class="hover:text-slate-900 transition">Why Verso</a>
-        <a href="index.html#how-it-works" class="hover:text-slate-900 transition">How it works</a>
+        <a href="how-it-works.html" class="hover:text-slate-900 transition">How it works</a>
+        <a href="company.html" class="hover:text-slate-900 transition">Company</a>
         <a href="pricing.html" class="text-primary hover:text-primary-dark transition font-semibold">Pricing</a>
         <a href="https://verso.fly.dev/playground/" class="border-2 border-accent text-accent bg-white px-4 py-2 rounded-full font-semibold hover:bg-accent hover:text-white transition hover:-translate-y-0.5 hover:shadow-lg">Login</a>
-        <a href="https://verso.fly.dev/playground/" class="bg-accent text-white px-4 py-2 rounded-full font-semibold hover:bg-accent-dark transition hover:-translate-y-0.5 hover:shadow-lg">Get free access</a>
+        <a href="https://verso.fly.dev/playground/" class="bg-accent text-white px-4 py-2 rounded-full font-semibold hover:bg-accent-dark transition hover:-translate-y-0.5 hover:shadow-lg">Get started for free</a>
         <div class="relative group">
           <button class="flex items-center gap-1 text-slate-600 hover:text-slate-900 transition font-semibold" aria-label="Select language">
             <span>EN</span>
@@ -82,7 +92,8 @@
     </div>
     <div id="mobile-menu" class="hidden md:hidden bg-white border-t px-6 pb-4">
       <a href="index.html#hero" class="block py-3 text-slate-600 font-medium border-b border-slate-100">Why Verso</a>
-      <a href="index.html#how-it-works" class="block py-3 text-slate-600 font-medium border-b border-slate-100">How it works</a>
+      <a href="how-it-works.html" class="block py-3 text-slate-600 font-medium border-b border-slate-100">How it works</a>
+      <a href="company.html" class="block py-3 text-slate-600 font-medium border-b border-slate-100">Company</a>
       <a href="pricing.html" class="block py-3 text-primary font-semibold border-b border-slate-100">Pricing</a>
       <a href="https://verso.fly.dev/playground/" class="block py-3 text-slate-600 font-medium border-b border-slate-100">Login</a>
       <div class="py-3 border-b border-slate-100">
@@ -94,7 +105,7 @@
           <a href="#" class="text-sm text-slate-600 hover:text-primary">Deutsch</a>
         </div>
       </div>
-      <a href="https://verso.fly.dev/playground/" class="mt-3 block text-center bg-accent text-white px-4 py-2.5 rounded-full font-semibold">Get free access</a>
+      <a href="https://verso.fly.dev/playground/" class="mt-3 block text-center bg-accent text-white px-4 py-2.5 rounded-full font-semibold">Get started for free</a>
     </div>
   </nav>
 
@@ -105,10 +116,11 @@
       <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl -z-10"></div>
       <div class="max-w-6xl mx-auto px-6 text-center animate-fade-in-up">
         <h1 class="text-4xl sm:text-5xl lg:text-7xl font-semibold tracking-tight leading-tight mb-6">
-          Choose the plan that is best for you
+          Pricing
         </h1>
         <p class="text-lg text-slate-600 max-w-2xl mx-auto mb-8">
-          Start with 10M free credits. Pay for what you use on top. Upgrade for plans to get the best deal.
+          Start with 10M free credits. Pay for what you use on top.<br>
+          Upgrade for plans to get the best deal.
         </p>
 
         <!-- Billing Toggle -->
@@ -155,11 +167,19 @@
               <div class="bg-slate-50 rounded-lg p-4 mb-4">
                 <div class="mb-1">
                   <div><span class="font-bold text-primary text-lg">2M</span> <span class="text-slate-600 text-sm">free credits</span></div>
-                  <div><span class="font-bold text-primary text-lg">$1/M</span> <span class="text-slate-600 text-sm">credit afterwards</span></div>
+                  <div><span class="text-primary text-sm">$1/M</span> <span class="text-slate-600 text-sm">credit afterwards</span></div>
                 </div>
               </div>
             </div>
             <ul class="space-y-3 mb-8 flex-grow">
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                <span class="text-slate-700">PowerPoint add-in</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                <span class="text-slate-700">Chat interface</span>
+              </li>
               <li class="flex items-start gap-3">
                 <svg class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
                 <span class="text-slate-700">AI-powered slide generation</span>
@@ -170,21 +190,17 @@
               </li>
               <li class="flex items-start gap-3">
                 <svg class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                <span class="text-slate-700">Web chat interface</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <svg class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                <span class="text-slate-700">PowerPoint export</span>
+                <span class="text-slate-700">Exports in .pdf & .pptx</span>
               </li>
             </ul>
             <a href="https://verso.fly.dev/playground/" class="block w-full text-center bg-slate-100 text-slate-900 px-6 py-3 rounded-full font-semibold hover:bg-slate-200 transition mt-auto">Get Started</a>
           </div>
 
-          <!-- Dove Plan -->
+          <!-- Sparrow Plan -->
           <div class="pricing-card bg-white rounded-2xl border-2 border-slate-200 p-8 scroll-animate flex flex-col">
             <div class="mb-6">
-              <h3 class="text-2xl font-bold mb-2">Dove</h3>
-              <p class="text-slate-600 text-sm">Perfect for individuals who want to fly higher</p>
+              <h3 class="text-2xl font-bold mb-2">Sparrow</h3>
+              <p class="text-slate-600 text-sm">For those who want to fly higher</p>
             </div>
             <div class="mb-6">
               <div class="flex items-baseline">
@@ -202,11 +218,19 @@
               <div class="bg-slate-50 rounded-lg p-4 mb-4">
                 <div class="mb-1">
                   <div><span class="font-bold text-primary text-lg">10M</span> <span class="text-slate-600 text-sm">credits per month</span></div>
-                  <div><span class="font-bold text-primary text-lg">$1/M</span> <span class="text-slate-600 text-sm">credit afterwards</span></div>
+                  <div><span class="text-primary text-sm">$1/M</span> <span class="text-slate-600 text-sm">credit afterwards</span></div>
                 </div>
               </div>
             </div>
             <ul class="space-y-3 mb-8 flex-grow">
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                <span class="text-slate-700">PowerPoint add-in</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                <span class="text-slate-700">Chat interface</span>
+              </li>
               <li class="flex items-start gap-3">
                 <svg class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
                 <span class="text-slate-700">AI-powered slide generation</span>
@@ -217,11 +241,7 @@
               </li>
               <li class="flex items-start gap-3">
                 <svg class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                <span class="text-slate-700">Web chat interface</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <svg class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                <span class="text-slate-700">PowerPoint export</span>
+                <span class="text-slate-700">Exports in .pdf & .pptx</span>
               </li>
             </ul>
             <a href="https://verso.fly.dev/playground/" class="block w-full text-center bg-slate-100 text-slate-900 px-6 py-3 rounded-full font-semibold hover:bg-slate-200 transition mt-auto">Get Started</a>
@@ -240,7 +260,7 @@
               <div class="flex items-baseline">
                 <span class="price-container">
                   <span class="monthly-price hidden font-extrabold" style="font-size: 2.52rem;">$19</span>
-                  <span class="annual-price">
+                  <span class="annual-price whitespace-nowrap">
                     <span class="font-extrabold line-through text-slate-400" style="font-size: 2.52rem;">$19</span>
                     <span class="font-extrabold text-primary ml-2" style="font-size: 2.52rem;">$14</span>
                   </span>
@@ -252,18 +272,18 @@
               <div class="bg-primary/10 rounded-lg p-4 mb-4 border border-primary/20">
                 <div class="mb-1">
                   <div><span class="font-bold text-primary text-lg">50M</span> <span class="text-slate-600 text-sm">credits per month</span></div>
-                  <div><span class="font-bold text-primary text-lg">$0.9/M</span> <span class="text-slate-600 text-sm">credit afterwards</span></div>
+                  <div><span class="text-primary text-sm">$0.9/M</span> <span class="text-slate-600 text-sm">credit afterwards</span></div>
                 </div>
               </div>
             </div>
             <ul class="space-y-3 mb-8 flex-grow">
               <li class="flex items-start gap-3">
                 <svg class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                <span class="text-slate-700"><strong>Everything in Birdie</strong></span>
+                <span class="text-slate-700"><strong>Everything in Sparrow</strong></span>
               </li>
               <li class="flex items-start gap-3">
                 <svg class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                <span class="text-slate-700">PowerPoint add-in</span>
+                <span class="text-slate-700">Crane 2.1 harness</span>
               </li>
               <li class="flex items-start gap-3">
                 <svg class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
@@ -285,13 +305,13 @@
           <div class="pricing-card bg-white rounded-2xl border-2 border-slate-200 p-8 scroll-animate flex flex-col">
             <div class="mb-6">
               <h3 class="text-2xl font-bold mb-2">Albatros</h3>
-              <p class="text-slate-600 text-sm">For large teams, enterprises, and birds with big wings</p>
+              <p class="text-slate-600 text-sm">For large teams, enterprises, and big wingspans</p>
             </div>
             <div class="mb-6">
               <div class="flex items-baseline">
                 <span class="price-container">
                   <span class="monthly-price hidden font-extrabold" style="font-size: 2.52rem;">$49</span>
-                  <span class="annual-price">
+                  <span class="annual-price whitespace-nowrap">
                     <span class="font-extrabold line-through text-slate-400" style="font-size: 2.52rem;">$49</span>
                     <span class="font-extrabold text-primary ml-2" style="font-size: 2.52rem;">$37</span>
                   </span>
@@ -303,7 +323,7 @@
               <div class="bg-slate-50 rounded-lg p-4 mb-4">
                 <div class="mb-1">
                   <div><span class="font-bold text-primary text-lg">200M</span> <span class="text-slate-600 text-sm">credits per month</span></div>
-                  <div><span class="font-bold text-primary text-lg">$0.7/M</span> <span class="text-slate-600 text-sm">credit afterwards</span></div>
+                  <div><span class="text-primary text-sm">$0.7/M</span> <span class="text-slate-600 text-sm">credit afterwards</span></div>
                 </div>
               </div>
             </div>
@@ -314,7 +334,11 @@
               </li>
               <li class="flex items-start gap-3">
                 <svg class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                <span class="text-slate-700">SSO & advanced security</span>
+                <span class="text-slate-700">Crane 3.0 harness</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                <span class="text-slate-700">SSO & MFA login</span>
               </li>
               <li class="flex items-start gap-3">
                 <svg class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
@@ -323,10 +347,6 @@
               <li class="flex items-start gap-3">
                 <svg class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
                 <span class="text-slate-700">Custom integrations</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <svg class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                <span class="text-slate-700">SLA guarantee</span>
               </li>
             </ul>
             <a href="https://verso.fly.dev/playground/" class="block w-full text-center bg-slate-100 text-slate-900 px-6 py-3 rounded-full font-semibold hover:bg-slate-200 transition mt-auto">Get Started</a>
@@ -386,9 +406,9 @@
     <section class="py-24 bg-primary-dark relative overflow-hidden">
       <div class="absolute inset-0 bg-gradient-to-br from-primary-dark via-primary-dark to-accent/20 -z-0"></div>
       <div class="max-w-3xl mx-auto px-6 text-center relative z-10 scroll-animate">
-        <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">Ready to get started?</h2>
+        <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">Ready to build your next deck?</h2>
         <p class="text-slate-400 text-lg mb-8">Start working on your presentations in seconds. No credit card required.</p>
-        <a href="https://verso.fly.dev/playground/" class="inline-block bg-accent text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-accent-dark transition hover:-translate-y-0.5 animate-pulse-glow">Get free access</a>
+        <a href="https://verso.fly.dev/playground/" class="inline-block bg-accent text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-accent-dark transition hover:-translate-y-0.5 animate-pulse-glow">Get started for free</a>
       </div>
     </section>
 

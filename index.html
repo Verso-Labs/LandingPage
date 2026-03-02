@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Verso.ai — Professional Presentations from Prompts</title>
+  <title>VersoAI</title>
   <meta name="description" content="Create stunning, brand-perfect presentations in seconds. Verso.ai generates slides that match your existing themes and slidemasters — via web chat or PowerPoint add-in.">
   <link rel="icon" href="logo_flat_red.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -31,20 +31,21 @@
 <body class="bg-white text-slate-900 antialiased">
 
   <!-- Nav -->
-  <nav id="navbar" class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md transition-shadow duration-300">
+  <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300">
     <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
       <a href="index.html" class="flex items-center gap-2">
         <img src="logo_flat_red.png" alt="Verso.ai Logo" class="h-8 w-8">
-        <span class="text-xl font-bold tracking-tight">Verso<span class="text-primary">AI</span></span>
+        <span class="text-xl font-bold tracking-tight navbar-brand">Verso<span class="navbar-brand-accent">AI</span></span>
       </a>
-      <div class="hidden md:flex items-center gap-6 text-base font-medium text-slate-600">
-        <a href="#hero" class="text-primary hover:text-primary-dark transition font-semibold">Why Verso</a>
-        <a href="#how-it-works" class="hover:text-slate-900 transition">How it works</a>
-        <a href="pricing.html" class="hover:text-slate-900 transition">Pricing</a>
-        <a href="https://verso.fly.dev/playground/" class="border-2 border-accent text-accent bg-white px-4 py-2 rounded-full font-semibold hover:bg-accent hover:text-white transition hover:-translate-y-0.5 hover:shadow-lg">Login</a>
-        <a href="https://verso.fly.dev/playground/" class="bg-accent text-white px-4 py-2 rounded-full font-semibold hover:bg-accent-dark transition hover:-translate-y-0.5 hover:shadow-lg">Get free access</a>
+      <div class="hidden md:flex items-center gap-6 text-base font-medium navbar-links">
+        <a href="#hero" class="navbar-link-primary font-semibold">Why Verso</a>
+        <a href="how-it-works.html" class="navbar-link transition">How it works</a>
+        <a href="company.html" class="navbar-link transition">Company</a>
+        <a href="pricing.html" class="navbar-link transition">Pricing</a>
+        <a href="https://verso.fly.dev/playground/" class="navbar-login border-2 px-4 py-2 rounded-full font-semibold transition hover:-translate-y-0.5 hover:shadow-lg">Login</a>
+        <a href="https://verso.fly.dev/playground/" class="bg-accent text-white px-4 py-2 rounded-full font-semibold hover:bg-accent-dark transition hover:-translate-y-0.5 hover:shadow-lg">Get started for free</a>
         <div class="relative group">
-          <button class="flex items-center gap-1 text-slate-600 hover:text-slate-900 transition font-semibold" aria-label="Select language">
+          <button class="navbar-lang flex items-center gap-1 transition font-semibold" aria-label="Select language">
             <span>EN</span>
             <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
@@ -64,7 +65,8 @@
     </div>
     <div id="mobile-menu" class="hidden md:hidden bg-white border-t px-6 pb-4">
       <a href="#hero" class="block py-3 text-primary font-semibold border-b border-slate-100">Why Verso</a>
-      <a href="#how-it-works" class="block py-3 text-slate-600 font-medium border-b border-slate-100">How it works</a>
+      <a href="how-it-works.html" class="block py-3 text-slate-600 font-medium border-b border-slate-100">How it works</a>
+      <a href="company.html" class="block py-3 text-slate-600 font-medium border-b border-slate-100">Company</a>
       <a href="pricing.html" class="block py-3 text-slate-600 font-medium border-b border-slate-100">Pricing</a>
       <a href="https://verso.fly.dev/playground/" class="block py-3 text-slate-600 font-medium border-b border-slate-100">Login</a>
       <div class="py-3 border-b border-slate-100">
@@ -76,7 +78,7 @@
           <a href="#" class="text-sm text-slate-600 hover:text-primary">Deutsch</a>
         </div>
       </div>
-      <a href="https://verso.fly.dev/playground/" class="mt-3 block text-center bg-accent text-white px-4 py-2.5 rounded-full font-semibold">Get free access</a>
+      <a href="https://verso.fly.dev/playground/" class="mt-3 block text-center bg-accent text-white px-4 py-2.5 rounded-full font-semibold">Get started for free</a>
     </div>
   </nav>
 
@@ -84,25 +86,21 @@
 
     <!-- Hero -->
     <section id="hero" class="min-h-screen pt-16 flex items-center relative overflow-hidden">
-      <div class="absolute inset-0 -z-10" style="background: linear-gradient(135deg, #0B00CF, #300A6E, #FF2D2B, #C10A28);"></div>
+      <div class="absolute inset-0 -z-10" style="background: radial-gradient(ellipse at 50% 100%, #FF2D2B, #0B00CF, #300A6E, #171721);"></div>
       <div class="max-w-7xl mx-auto px-6 py-20 w-full">
         <div class="flex flex-col items-center text-center animate-fade-in-up">
-          <h1 class="text-4xl sm:text-5xl lg:text-7xl font-semibold tracking-tight leading-tight mb-6 max-w-4xl text-white">
-            Native AI slide work that saves you hours
+          <h1 class="text-4xl sm:text-5xl lg:text-7xl font-semibold tracking-tight leading-tight mb-6 text-white whitespace-nowrap">
+            AI slide work that works
           </h1>
           <p class="text-2xl text-white max-w-4xl mb-8">
-            VersoAI works off your slides in Powerpoint. It translates, reviews, modifies or creates slides in seconds, so you can spend your time on quality tasks.
+            Frontier AI agents that natively work in PowerPoint.<br>
+            Built by researchers. For consultants & strategy teams.
           </p>
 
-          <!-- Email signup form -->
-          <div class="relative w-full max-w-sm mb-12">
-            <input
-              type="email"
-              placeholder="Your email"
-              class="w-full px-6 py-3.5 pr-40 rounded-full border-2 border-slate-200 text-base focus:outline-none focus:border-primary transition"
-            />
-            <a href="https://verso.fly.dev/playground/" class="absolute right-2 top-2 bottom-2 bg-accent text-white px-5 py-2 rounded-full font-semibold text-sm hover:bg-accent-dark transition hover:shadow-lg whitespace-nowrap flex items-center justify-center">
-              Get free access
+          <!-- CTA Button -->
+          <div class="mb-12">
+            <a href="https://verso.fly.dev/playground/" class="inline-block bg-accent text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-accent-dark transition hover:-translate-y-0.5 hover:shadow-lg animate-pulse-glow">
+              Start working
             </a>
           </div>
 
@@ -199,11 +197,12 @@
     <section class="bg-slate-50 border-y border-slate-200 py-24">
       <div class="max-w-7xl mx-auto px-6">
         <div class="flex flex-col items-center text-center mb-16 scroll-animate">
-          <h2 class="text-4xl sm:text-5xl lg:text-7xl font-semibold tracking-tight leading-tight mb-6 max-w-4xl">
-            Trained on providing value
+          <h2 class="text-4xl sm:text-5xl lg:text-7xl font-semibold tracking-tight leading-tight mb-6 whitespace-nowrap">
+            Intelligence where you need it
           </h2>
           <p class="text-2xl text-slate-600 max-w-7xl">
-            VersoAI focuses on working off your templates and existing decks. It acts on Powerpoint objects so you can point, ask, and correct if needed. Works on text, shapes, images, charts, you name it.
+            Natively integrated in PowerPoint.<br>
+            Verso works on shapes, texts, charts, tables. Just point, and ask.
           </p>
         </div>
 
@@ -218,7 +217,7 @@
             </div>
             <div class="h-1/2 flex flex-col items-center justify-center text-center p-6">
               <h3 class="text-xl font-bold text-slate-900 mb-2">Natively integrated</h3>
-              <p class="text-base text-slate-600">Work on your slides where you're used to: Powerpoint.</p>
+              <p class="text-base text-slate-600">Intelligence where you need it: natively integrated in PowerPoint.</p>
             </div>
           </div>
 
@@ -230,8 +229,8 @@
               </svg>
             </div>
             <div class="h-1/2 flex flex-col items-center justify-center text-center p-6">
-              <h3 class="text-xl font-bold text-slate-900 mb-2">Work off your assets</h3>
-              <p class="text-base text-slate-600">Leverage your templates, color palettes and icons to create decks that feel like you.</p>
+              <h3 class="text-xl font-bold text-slate-900 mb-2">No compromise on quality</h3>
+              <p class="text-base text-slate-600">Let AI do the heavy lifting, apply your final touch.</p>
             </div>
           </div>
 
@@ -252,7 +251,7 @@
         <!-- Trusted by section -->
         <div class="mt-24 scroll-animate">
           <h3 class="text-2xl font-bold text-center text-slate-900 mb-12">
-            Trusted by the best performing and most demanding teams
+            Trusted by the best teams worldwide
           </h3>
           <div class="flex flex-wrap items-center justify-center gap-12 px-4">
             <!-- McKinsey -->
@@ -285,10 +284,10 @@
     </section>
 
     <!-- Features -->
-    <section id="features" class="py-24">
+    <section id="features" class="py-24" style="font-family: 'Poppins', sans-serif;">
       <div class="max-w-7xl mx-auto px-6">
         <div class="text-center mb-16 scroll-animate">
-          <h2 class="text-3xl sm:text-4xl font-bold">Everything you need to build better decks, faster</h2>
+          <h2 class="text-3xl sm:text-4xl font-bold" style="font-family: 'Spectral', serif;">Everything you need to build better decks, faster</h2>
         </div>
         <div class="grid md:grid-cols-2 gap-12 items-start">
           <!-- Left: Animation Space -->
@@ -360,11 +359,11 @@
             <button onclick="switchFeature(3)" class="feature-item w-full text-left p-6 rounded-xl bg-slate-50 border-2 border-transparent hover:border-primary hover:shadow-lg transition">
               <div class="flex items-start gap-4">
                 <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 16.875h3.375m0 0h3.375m-3.375 0V13.5m0 3.375v3.375M6 10.5h2.25a2.25 2.25 0 002.25-2.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v2.25A2.25 2.25 0 006 10.5zm0 9.75h2.25A2.25 2.25 0 0010.5 18v-2.25a2.25 2.25 0 00-2.25-2.25H6a2.25 2.25 0 00-2.25 2.25V18A2.25 2.25 0 006 20.25zm9.75-9.75H18a2.25 2.25 0 002.25-2.25V6A2.25 2.25 0 0018 3.75h-2.25A2.25 2.25 0 0013.5 6v2.25a2.25 2.25 0 002.25 2.25z"/></svg>
+                  <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182"/></svg>
                 </div>
                 <div>
-                  <h3 class="font-bold text-lg mb-2">Powerpoint integration</h3>
-                  <p class="text-slate-600 text-sm">Works directly inside PowerPoint. No switching between tools.</p>
+                  <h3 class="font-bold text-lg mb-2">Iterate instantly</h3>
+                  <p class="text-slate-600 text-sm whitespace-nowrap">Refine any slide with follow-up prompts. Change tone, layout, content.</p>
                 </div>
               </div>
             </button>
@@ -373,11 +372,11 @@
             <button onclick="switchFeature(4)" class="feature-item w-full text-left p-6 rounded-xl bg-slate-50 border-2 border-transparent hover:border-primary hover:shadow-lg transition">
               <div class="flex items-start gap-4">
                 <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182"/></svg>
+                  <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 16.875h3.375m0 0h3.375m-3.375 0V13.5m0 3.375v3.375M6 10.5h2.25a2.25 2.25 0 002.25-2.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v2.25A2.25 2.25 0 006 10.5zm0 9.75h2.25A2.25 2.25 0 0010.5 18v-2.25a2.25 2.25 0 00-2.25-2.25H6a2.25 2.25 0 00-2.25 2.25V18A2.25 2.25 0 006 20.25zm9.75-9.75H18a2.25 2.25 0 002.25-2.25V6A2.25 2.25 0 0018 3.75h-2.25A2.25 2.25 0 0013.5 6v2.25a2.25 2.25 0 002.25 2.25z"/></svg>
                 </div>
                 <div>
-                  <h3 class="font-bold text-lg mb-2">Iterate instantly</h3>
-                  <p class="text-slate-600 text-sm">Refine any slide with follow-up prompts. Change tone, layout, content.</p>
+                  <h3 class="font-bold text-lg mb-2">Powerpoint integration</h3>
+                  <p class="text-slate-600 text-sm">Works directly inside PowerPoint. No switching between tools.</p>
                 </div>
               </div>
             </button>
@@ -399,201 +398,13 @@
       </div>
     </section>
 
-    <!-- How It Works -->
-    <section id="how-it-works" class="pt-32 pb-16 relative overflow-hidden">
-      <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl -z-10"></div>
-      <div class="max-w-6xl mx-auto px-6 text-center animate-fade-in-up">
-        <h2 class="text-4xl sm:text-5xl lg:text-7xl font-semibold tracking-tight leading-tight mb-6">
-          Four steps to a perfect presentation
-        </h2>
-      </div>
-    </section>
-
-    <!-- How It Works Steps -->
-    <section class="py-24 bg-primary-dark text-white relative overflow-hidden">
-      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/10 rounded-full blur-3xl -z-0"></div>
-      <div class="max-w-6xl mx-auto px-6 relative z-10">
-        <div class="grid md:grid-cols-4 gap-8">
-          <div class="scroll-animate text-center">
-            <div class="text-5xl font-extrabold text-accent mb-4">1</div>
-            <h3 class="text-xl font-bold mb-3">Describe your deck</h3>
-            <p class="text-slate-300">Type a prompt or paste your content. Tell Verso what you need — a pitch deck, a quarterly review, a training module.</p>
-          </div>
-          <div class="scroll-animate text-center">
-            <div class="text-5xl font-extrabold text-accent mb-4">2</div>
-            <h3 class="text-xl font-bold mb-3">Point towards your assets</h3>
-            <p class="text-slate-300">Mention templates, images, fonts, or color palettes you want to use for creating the deck.</p>
-          </div>
-          <div class="scroll-animate text-center">
-            <div class="text-5xl font-extrabold text-accent mb-4">3</div>
-            <h3 class="text-xl font-bold mb-3">AI generates slides</h3>
-            <p class="text-slate-300">Verso creates a complete presentation that matches your brand, your templates, and your style — instantly.</p>
-          </div>
-          <div class="scroll-animate text-center">
-            <div class="text-5xl font-extrabold text-accent mb-4">4</div>
-            <h3 class="text-xl font-bold mb-3">Refine and export</h3>
-            <p class="text-slate-300">Edit with follow-up prompts, tweak any slide, then download as a fully editable PowerPoint file.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Detailed Steps -->
-    <section class="py-24">
-      <div class="max-w-6xl mx-auto px-6 space-y-24">
-
-        <!-- Step 1 Detail -->
-        <div class="grid md:grid-cols-2 gap-12 items-center scroll-animate">
-          <div>
-            <div class="inline-block bg-primary/10 text-primary text-sm font-semibold px-3 py-1 rounded-full mb-4">Step 1</div>
-            <h3 class="text-3xl font-bold mb-4">Describe your presentation</h3>
-            <p class="text-slate-600 text-lg mb-4">Start by describing what you need. Whether it's a sales pitch, quarterly update, or training deck, simply tell VersoAI your requirements.</p>
-            <ul class="space-y-3">
-              <li class="flex items-start gap-3">
-                <svg class="w-5 h-5 text-primary flex-shrink-0 mt-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                <span class="text-slate-700">Use natural language to describe your needs</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <svg class="w-5 h-5 text-primary flex-shrink-0 mt-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                <span class="text-slate-700">Paste existing content or start from scratch</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <svg class="w-5 h-5 text-primary flex-shrink-0 mt-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                <span class="text-slate-700">Specify tone, style, and key messages</span>
-              </li>
-            </ul>
-          </div>
-          <div class="bg-slate-50 rounded-2xl p-8">
-            <div class="bg-white rounded-lg shadow-md p-6 border border-slate-200">
-              <div class="text-xs text-slate-500 mb-3 font-semibold">Example Prompt:</div>
-              <p class="text-slate-700 italic">"Create a 10-slide pitch deck for our AI presentation tool. Include problem, solution, market opportunity, product demo, competitive advantage, business model, traction, team, financials, and ask. Keep it professional and data-driven."</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Step 2 Detail -->
-        <div class="grid md:grid-cols-2 gap-12 items-center scroll-animate">
-          <div class="order-2 md:order-1 bg-slate-50 rounded-2xl p-8">
-            <div class="bg-white rounded-lg shadow-md p-6 border border-slate-200">
-              <div class="text-xs text-slate-500 mb-3 font-semibold">Asset Selection:</div>
-              <div class="space-y-2 text-sm text-slate-700">
-                <div class="flex items-center gap-2">
-                  <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-                  <span>Corporate_Template_2024.pptx</span>
-                </div>
-                <div class="flex items-center gap-2">
-                  <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-                  <span>Brand_Colors.jpg</span>
-                </div>
-                <div class="flex items-center gap-2">
-                  <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/></svg>
-                  <span>Font: Montserrat</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="order-1 md:order-2">
-            <div class="inline-block bg-primary/10 text-primary text-sm font-semibold px-3 py-1 rounded-full mb-4">Step 2</div>
-            <h3 class="text-3xl font-bold mb-4">Point towards your assets</h3>
-            <p class="text-slate-600 text-lg mb-4">Specify the templates, images, fonts, or color palettes you want VersoAI to use when creating your deck.</p>
-            <ul class="space-y-3">
-              <li class="flex items-start gap-3">
-                <svg class="w-5 h-5 text-primary flex-shrink-0 mt-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                <span class="text-slate-700">Upload existing PowerPoint templates</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <svg class="w-5 h-5 text-primary flex-shrink-0 mt-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                <span class="text-slate-700">Reference brand images and graphics</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <svg class="w-5 h-5 text-primary flex-shrink-0 mt-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                <span class="text-slate-700">Specify fonts and color palettes</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Step 3 Detail -->
-        <div class="grid md:grid-cols-2 gap-12 items-center scroll-animate">
-          <div>
-            <div class="inline-block bg-primary/10 text-primary text-sm font-semibold px-3 py-1 rounded-full mb-4">Step 3</div>
-            <h3 class="text-3xl font-bold mb-4">AI generates your slides</h3>
-            <p class="text-slate-600 text-lg mb-4">VersoAI analyzes your requirements and creates a complete presentation in seconds, perfectly matching your brand.</p>
-            <ul class="space-y-3">
-              <li class="flex items-start gap-3">
-                <svg class="w-5 h-5 text-primary flex-shrink-0 mt-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                <span class="text-slate-700">Automatic brand color matching</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <svg class="w-5 h-5 text-primary flex-shrink-0 mt-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                <span class="text-slate-700">Uses your existing slidemasters</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <svg class="w-5 h-5 text-primary flex-shrink-0 mt-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                <span class="text-slate-700">Smart layout selection for each slide</span>
-              </li>
-            </ul>
-          </div>
-          <div class="bg-slate-50 rounded-2xl p-8">
-            <div class="bg-white rounded-lg shadow-md p-6 border border-primary/20">
-              <div class="text-xs text-primary mb-3 font-semibold">AI Processing...</div>
-              <div class="space-y-2">
-                <div class="h-2 bg-primary/20 rounded-full overflow-hidden">
-                  <div class="h-full bg-primary rounded-full animate-pulse" style="width: 100%"></div>
-                </div>
-                <div class="text-xs text-slate-600">✓ Analyzing brand guidelines</div>
-                <div class="text-xs text-slate-600">✓ Matching theme colors</div>
-                <div class="text-xs text-slate-600">✓ Applying slide layouts</div>
-                <div class="text-xs text-slate-600">✓ Generating content</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Step 4 Detail -->
-        <div class="grid md:grid-cols-2 gap-12 items-center scroll-animate">
-          <div class="order-2 md:order-1 bg-slate-50 rounded-2xl p-8">
-            <div class="bg-white rounded-lg shadow-md p-6 border border-slate-200">
-              <div class="text-xs text-slate-500 mb-3 font-semibold">Example Refinement:</div>
-              <p class="text-slate-700 mb-3 italic text-sm">"Make slide 3 more visual with a chart showing market growth"</p>
-              <div class="flex gap-2 flex-wrap">
-                <div class="text-xs bg-primary/10 text-primary px-3 py-1 rounded-full">Export .pptx</div>
-                <div class="text-xs bg-primary/10 text-primary px-3 py-1 rounded-full">Open in PowerPoint</div>
-                <div class="text-xs bg-primary/10 text-primary px-3 py-1 rounded-full">Share Link</div>
-              </div>
-            </div>
-          </div>
-          <div class="order-1 md:order-2">
-            <div class="inline-block bg-primary/10 text-primary text-sm font-semibold px-3 py-1 rounded-full mb-4">Step 4</div>
-            <h3 class="text-3xl font-bold mb-4">Refine and export</h3>
-            <p class="text-slate-600 text-lg mb-4">Not perfect yet? Use conversational prompts to iterate on any slide. When you're done, export as a fully editable PowerPoint file.</p>
-            <ul class="space-y-3">
-              <li class="flex items-start gap-3">
-                <svg class="w-5 h-5 text-primary flex-shrink-0 mt-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                <span class="text-slate-700">Iterate with simple follow-up prompts</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <svg class="w-5 h-5 text-primary flex-shrink-0 mt-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                <span class="text-slate-700">Make final tweaks in PowerPoint</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <svg class="w-5 h-5 text-primary flex-shrink-0 mt-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                <span class="text-slate-700">Export to .pptx, Google Slides, or PDF</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
     <!-- FAQ -->
     <section id="faq" class="py-24 bg-slate-50">
       <div class="max-w-7xl mx-auto px-6">
         <div class="text-center mb-16 scroll-animate">
           <h2 class="text-3xl sm:text-4xl font-bold">Frequently asked questions</h2>
         </div>
-        <div class="grid md:grid-cols-2 gap-6 scroll-animate">
+        <div class="grid md:grid-cols-2 gap-6 items-start scroll-animate">
           <details class="bg-white rounded-xl border border-slate-200 px-6 py-4 group">
             <summary class="flex justify-between items-center cursor-pointer font-semibold text-lg">
               How does VersoAI match my brand?
@@ -639,7 +450,7 @@
       <div class="max-w-3xl mx-auto px-6 text-center relative z-10 scroll-animate">
         <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">Ready to build your next deck?</h2>
         <p class="text-slate-400 text-lg mb-8">Start working on your presentations in seconds. No credit card required.</p>
-        <a href="https://verso.fly.dev/playground/" class="inline-block bg-accent text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-accent-dark transition hover:-translate-y-0.5 animate-pulse-glow">Get free access</a>
+        <a href="https://verso.fly.dev/playground/" class="inline-block bg-accent text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-accent-dark transition hover:-translate-y-0.5 animate-pulse-glow">Get started for free</a>
       </div>
     </section>
 
@@ -707,13 +518,53 @@
     }, { threshold: 0.1 });
     document.querySelectorAll('.scroll-animate').forEach(el => observer.observe(el));
 
-    // Nav shadow on scroll
+    // Nav scroll behavior
     const navbar = document.getElementById('navbar');
-    const hero = document.getElementById('hero');
-    const navObserver = new IntersectionObserver(([entry]) => {
-      navbar.classList.toggle('shadow-sm', !entry.isIntersecting);
-    }, { threshold: 0 });
-    navObserver.observe(hero);
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // FAQ accordion - close others when one opens
+    const faqDetails = document.querySelectorAll('#faq details');
+    faqDetails.forEach((detail) => {
+      detail.addEventListener('toggle', () => {
+        if (detail.open) {
+          faqDetails.forEach((otherDetail) => {
+            if (otherDetail !== detail && otherDetail.open) {
+              otherDetail.open = false;
+            }
+          });
+        }
+      });
+    });
+
+    // Highlight nav links based on scroll position
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('nav a[href^="#"]');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (window.scrollY >= sectionTop - 100) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('navbar-link-primary', 'font-semibold', 'text-primary');
+        link.classList.add('navbar-link');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.remove('navbar-link');
+          link.classList.add('navbar-link-primary', 'font-semibold');
+        }
+      });
+    });
 
     // Feature switching function
     function switchFeature(featureNumber) {
