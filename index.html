@@ -1,605 +1,868 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>VersoAI</title>
-  <meta name="description" content="Create stunning, brand-perfect presentations in seconds. Verso.ai generates slides that match your existing themes and slidemasters — via web chat or PowerPoint add-in.">
-  <link rel="icon" href="logo_raptor_red.svg" type="image/svg+xml">
+  <meta name="description" content="Native PowerPoint manipulation powered by frontier AI. Built for consultants and strategy teams.">
+  <link rel="icon" href="origami.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            primary: '#0B00CF',
-            'primary-dark': '#300A6E',
-            accent: '#FF2D2B',
-            'accent-dark': '#C10A28',
-            'accent-light': '#FFB3B2',
-            'primary-light': '#E6E5FF',
-          }
-        }
-      }
-    }
-  </script>
-  <link rel="stylesheet" href="/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;500;600;700&family=Spectral:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    html, body {
-      overflow-x: hidden;
-      max-width: 100%;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 100px;
+    }
+
     body {
+      font-family: 'Inter', sans-serif;
+      color: #1a1a1a;
+      background-color: #f8f8f8;
+      overflow-x: hidden;
+    }
+
+    /* Navigation */
+    nav {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      padding: 20px 60px;
+      background-color: #f8f8f8;
+      font-family: 'Spectral', serif;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #1a1a1a;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .logo:hover {
+      color: #000000;
+    }
+
+    .logo img {
+      width: 29px;
+      height: 29px;
+      filter: brightness(0) saturate(100%) invert(6%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(99%) contrast(99%);
+      transition: filter 0.3s;
+    }
+
+    .logo span {
+      font-family: 'Spectral', serif;
+    }
+
+    .logo:hover img {
+      filter: brightness(0) saturate(100%) invert(0%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0%) contrast(100%);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 40px;
+      list-style: none;
+      justify-content: center;
+    }
+
+    .nav-links a {
+      color: #666;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #1a1a1a;
+    }
+
+    .nav-buttons {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      justify-content: flex-end;
+    }
+
+    .nav-cta {
+      background-color: #f8f8f8;
+      color: #1a1a1a;
+      border: 2px solid #1a1a1a;
+      padding: 10px 20px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      border-radius: 50px;
+      transition: all 0.3s;
+    }
+
+    .nav-cta:hover {
+      background-color: #1a1a1a;
+      color: #ffffff;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .nav-cta-primary {
+      background-color: #1a1a1a;
+      color: #ffffff;
+      border: none;
+      padding: 10px 20px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      border-radius: 50px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .nav-cta-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: calc(100vh - 150px);
+      display: grid;
+      grid-template-rows: 1fr auto 1fr;
+      padding: 0 60px;
       position: relative;
+    }
+
+    .hero-spacer {
+      /* Spacers will take equal vertical space */
+    }
+
+    .hero-content {
+      max-width: 1200px;
+      width: 100%;
+      background: linear-gradient(135deg, rgba(230, 235, 240, 0.4) 0%, rgba(240, 230, 235, 0.4) 100%);
+      border-radius: 24px;
+      padding: 60px 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      margin: 0 auto;
+      align-self: center;
+    }
+
+    .hero-content::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url('monet.webp');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.35;
+      z-index: 0;
+    }
+
+    .hero-content > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 64px;
+      font-weight: 400;
+      line-height: 1.2;
+      color: #1a1a1a;
+      margin-bottom: 32px;
+    }
+
+    .hero p {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      line-height: 1.6;
+      color: #2a2a2a;
+      margin-bottom: 48px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-button {
+      display: inline-block;
+      background-color: #1a1a1a;
+      color: #ffffff;
+      padding: 16px 40px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .hero-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .hero-button-secondary {
+      display: inline-block;
+      background-color: #f8f8f8;
+      color: #1a1a1a;
+      border: 2px solid #1a1a1a;
+      padding: 16px 40px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.3s;
+    }
+
+    .hero-button-secondary:hover {
+      background-color: #1a1a1a;
+      color: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .backed-by {
+      margin-top: 60px;
+      text-align: center;
+    }
+
+    .backed-by h3 {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #666;
+      margin-bottom: 24px;
+    }
+
+    .investor-logos {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 42px;
+      flex-wrap: wrap;
+    }
+
+    .investor-logo {
+      height: 32px;
+      opacity: 0.8;
+      transition: opacity 0.3s;
+    }
+
+    .investor-logo:hover {
+      opacity: 1;
+    }
+
+    /* Intelligence Section */
+    .intelligence-section {
+      padding: 80px 60px;
+      background-color: #ffffff;
+    }
+
+    .intelligence-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .intelligence-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 48px;
+      font-weight: 400;
+      line-height: 1.2;
+      color: #1a1a1a;
+      margin-bottom: 20px;
+    }
+
+    .intelligence-section .subtitle {
+      font-size: 18px;
+      line-height: 1.6;
+      color: #666;
+      margin-bottom: 40px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+      margin-top: 0;
+    }
+
+    .feature-card {
+      text-align: center;
+      padding: 30px;
+    }
+
+    .feature-image {
+      width: 100%;
+      height: 240px;
+      background-color: #e8e8e8;
+      border-radius: 16px;
+      margin-bottom: 32px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid #e0e0e0;
+    }
+
+    .feature-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .feature-card h3 {
+      font-family: 'Spectral', serif;
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      color: #1a1a1a;
+    }
+
+    .feature-card p {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #666;
+    }
+
+    /* Capabilities Section */
+    .capabilities-section {
+      padding: 80px 60px;
+      background: linear-gradient(135deg, rgba(230, 235, 240, 0.3) 0%, rgba(240, 230, 235, 0.3) 100%);
+    }
+
+    .capabilities-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .capabilities-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 48px;
+      font-weight: 400;
+      line-height: 1.2;
+      color: #1a1a1a;
+      margin-bottom: 60px;
+      text-align: center;
+    }
+
+    .capability-item {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      margin-bottom: 60px;
+      align-items: center;
+    }
+
+    .capability-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .capability-item:nth-child(even) .capability-text {
+      order: 2;
+    }
+
+    .capability-item:nth-child(even) .capability-image {
+      order: 1;
+    }
+
+    .capability-text h3 {
+      font-family: 'Spectral', serif;
+      font-size: 32px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      color: #1a1a1a;
+    }
+
+    .capability-text p {
+      font-size: 18px;
+      line-height: 1.8;
+      color: #666;
+    }
+
+    .capability-image {
+      background-color: #ffffff;
+      border-radius: 16px;
+      padding: 60px;
+      border: 2px solid #e0e0e0;
+      min-height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .capability-image-placeholder {
+      width: 100%;
+      height: 100%;
+      background-color: #f8f8f8;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #999;
+      font-size: 14px;
+    }
+
+    /* Models Section */
+    .models-section {
+      padding: 80px 60px;
+      background-color: #ffffff;
+    }
+
+    .models-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .models-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 48px;
+      font-weight: 400;
+      line-height: 1.2;
+      color: #1a1a1a;
+      margin-bottom: 40px;
+    }
+
+    .models-section p {
+      font-size: 18px;
+      line-height: 1.8;
+      color: #666;
+      max-width: 900px;
+      margin: 0 auto 40px;
+    }
+
+    .models-illustration {
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      aspect-ratio: 16 / 9;
+      background-color: #f0f0f0;
+      border-radius: 16px;
+      border: 2px solid #e0e0e0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #999;
+      font-size: 14px;
+    }
+
+    /* CTA Banner */
+    .cta-banner {
+      padding: 100px 60px;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, rgba(230, 235, 240, 0.5) 0%, rgba(240, 230, 235, 0.5) 100%);
+    }
+
+    .cta-banner::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url('waterlilies.jpg');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.50;
+      z-index: 0;
+    }
+
+    .cta-banner-content {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-banner h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 29px;
+      font-weight: 400;
+      line-height: 1.3;
+      color: #1a1a1a;
+      margin-bottom: 40px;
+    }
+
+    .cta-banner-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #000000;
+      padding: 40px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .footer-brand img {
+      width: 32px;
+      height: 32px;
+    }
+
+    .footer-brand span {
+      font-family: 'Spectral', serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: #ffffff;
+    }
+
+    .footer-text {
+      font-size: 14px;
+      color: #999999;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav {
+        padding: 20px 30px;
+        grid-template-columns: auto 1fr;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .nav-buttons {
+        gap: 8px;
+      }
+
+      .nav-cta-primary {
+        padding: 8px 16px;
+        font-size: 13px;
+      }
+
+      .nav-cta {
+        padding: 8px 16px;
+        font-size: 13px;
+      }
+
+      .hero {
+        padding: 0 30px;
+      }
+
+      .hero-content {
+        padding: 40px 30px;
+      }
+
+      .hero h1 {
+        font-size: 42px;
+      }
+
+      .hero p {
+        font-size: 18px;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .hero-button, .hero-button-secondary {
+        width: 100%;
+        text-align: center;
+      }
+
+      .intelligence-section {
+        padding: 60px 30px;
+      }
+
+      .intelligence-section h2 {
+        font-size: 36px;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .capabilities-section {
+        padding: 60px 30px;
+      }
+
+      .capabilities-section h2 {
+        font-size: 36px;
+      }
+
+      .capability-item {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        margin-bottom: 40px;
+      }
+
+      .capability-item:nth-child(even) .capability-text {
+        order: 1;
+      }
+
+      .capability-item:nth-child(even) .capability-image {
+        order: 2;
+      }
+
+      .capability-text h3 {
+        font-size: 24px;
+      }
+
+      .capability-text p {
+        font-size: 16px;
+      }
+
+      .capability-image {
+        padding: 40px;
+        min-height: 200px;
+      }
+
+      .models-section {
+        padding: 60px 30px;
+      }
+
+      .models-section h2 {
+        font-size: 36px;
+      }
+
+      .cta-banner {
+        padding: 80px 30px;
+      }
+
+      .cta-banner h2 {
+        font-size: 32px;
+      }
+
+      .cta-banner-buttons {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .cta-banner-buttons .hero-button,
+      .cta-banner-buttons .hero-button-secondary {
+        width: 100%;
+      }
+
+      footer {
+        padding: 30px;
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+      }
     }
   </style>
 </head>
-<body class="bg-white text-slate-900 antialiased">
+<body>
 
-  <!-- Nav -->
-  <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300">
-    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-      <a href="index.html" class="flex items-center gap-2">
-        <img src="logo_raptor_red.svg" alt="Verso.ai Logo" class="h-8 w-8">
-        <span class="text-xl font-bold tracking-tight navbar-brand">Verso<span class="navbar-brand-accent">AI</span></span>
-      </a>
-      <div class="hidden md:flex items-center gap-6 text-base font-medium navbar-links">
-        <a href="#hero" class="navbar-link-primary font-semibold">Why Verso</a>
-        <a href="how-it-works.html" class="navbar-link transition">How it works</a>
-        <a href="company.html" class="navbar-link transition">Company</a>
-        <a href="pricing.html" class="navbar-link transition">Pricing</a>
-        <a href="https://verso.fly.dev/playground/" class="navbar-login border-2 px-4 py-2 rounded-full font-semibold transition hover:-translate-y-0.5 hover:shadow-lg">Login</a>
-        <a href="https://verso.fly.dev/playground/" class="bg-accent text-white px-4 py-2 rounded-full font-semibold hover:bg-accent-dark transition hover:-translate-y-0.5 hover:shadow-lg">Get started for free</a>
-        <div class="relative group">
-          <button class="navbar-lang flex items-center gap-1 transition font-semibold" aria-label="Select language">
-            <span>EN</span>
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
-            </svg>
-          </button>
-          <div class="absolute right-0 mt-2 w-32 bg-white rounded-lg shadow-lg border border-slate-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-            <a href="#" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 rounded-t-lg font-semibold">EN</a>
-            <a href="#" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 font-semibold">FR</a>
-            <a href="#" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 font-semibold">ES</a>
-            <a href="#" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 rounded-b-lg font-semibold">DE</a>
-          </div>
-        </div>
-      </div>
-      <button id="menu-toggle" class="md:hidden p-2 text-slate-600" aria-label="Menu">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
-      </button>
-    </div>
-    <div id="mobile-menu" class="hidden md:hidden bg-white border-t px-6 pb-4">
-      <a href="#hero" class="block py-3 text-primary font-semibold border-b border-slate-100">Why Verso</a>
-      <a href="how-it-works.html" class="block py-3 text-slate-600 font-medium border-b border-slate-100">How it works</a>
-      <a href="company.html" class="block py-3 text-slate-600 font-medium border-b border-slate-100">Company</a>
-      <a href="pricing.html" class="block py-3 text-slate-600 font-medium border-b border-slate-100">Pricing</a>
-      <a href="https://verso.fly.dev/playground/" class="block py-3 text-slate-600 font-medium border-b border-slate-100">Login</a>
-      <div class="py-3 border-b border-slate-100">
-        <div class="text-xs font-semibold text-slate-400 mb-2">Language</div>
-        <div class="grid grid-cols-2 gap-2">
-          <a href="#" class="text-sm text-slate-600 hover:text-primary">English</a>
-          <a href="#" class="text-sm text-slate-600 hover:text-primary">Français</a>
-          <a href="#" class="text-sm text-slate-600 hover:text-primary">Español</a>
-          <a href="#" class="text-sm text-slate-600 hover:text-primary">Deutsch</a>
-        </div>
-      </div>
-      <a href="https://verso.fly.dev/playground/" class="mt-3 block text-center bg-accent text-white px-4 py-2.5 rounded-full font-semibold">Get started for free</a>
+  <!-- Navigation -->
+  <nav>
+    <a href="index.html" class="logo">
+      <img src="origami.png" alt="VersoAI Logo">
+      <span>VersoAI</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#intelligence">Features</a></li>
+      <li><a href="index.html#models">Models</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="pricing.html">Contact Us</a></li>
+    </ul>
+    <div class="nav-buttons">
+      <a href="https://verso.fly.dev/playground/" class="nav-cta-primary">Get started</a>
+      <a href="demo.html" class="nav-cta">Book a demo</a>
     </div>
   </nav>
 
-  <main>
-
-    <!-- Hero -->
-    <section id="hero" class="min-h-screen pt-16 flex items-center relative overflow-hidden">
-      <div class="absolute inset-0 -z-10" style="background: radial-gradient(ellipse at 50% 100%, #FF2D2B, #0B00CF, #300A6E, #171721);"></div>
-      <div class="max-w-7xl mx-auto px-6 py-20 w-full">
-        <div class="flex flex-col items-center text-center animate-fade-in-up">
-          <h1 class="text-4xl sm:text-5xl lg:text-7xl font-semibold tracking-tight leading-tight mb-6 text-white whitespace-nowrap">
-            AI slide work that works
-          </h1>
-          <p class="text-2xl text-white max-w-4xl mb-8">
-            Frontier AI agents that natively work in PowerPoint.<br>
-            Built by researchers. For consultants & strategy teams.
-          </p>
-
-          <!-- CTA Button -->
-          <div class="mb-12">
-            <a href="https://verso.fly.dev/playground/" class="inline-block bg-accent text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-accent-dark transition hover:-translate-y-0.5 hover:shadow-lg animate-pulse-glow">
-              Start working
-            </a>
-          </div>
-
-          <!-- Slide illustration - 3x bigger -->
-          <div class="animate-float w-full max-w-5xl" style="animation-delay: 0.3s;">
-            <!-- Realistic slide mockup -->
-            <div class="relative mx-auto w-full">
-              <!-- Back slides (4 stacked) -->
-              <div class="absolute w-full aspect-[16/10] bg-white rounded-xl shadow border border-slate-200 opacity-45" style="top:54px; left:72px"></div>
-              <div class="absolute w-full aspect-[16/10] bg-white rounded-xl shadow border border-slate-200 opacity-55" style="top:36px; left:48px"></div>
-              <div class="absolute w-full aspect-[16/10] bg-white rounded-xl shadow-lg border border-slate-200 opacity-65" style="top:18px; left:24px"></div>
-              <!-- Front slide -->
-              <div class="relative bg-white rounded-xl shadow-2xl border border-slate-200 aspect-[16/10] p-12 flex flex-col">
-                <!-- Title + accent bar + subtitle -->
-                <div class="mb-8">
-                  <div class="h-10 w-2/5 bg-slate-800 rounded mb-4"></div>
-                  <div class="h-2 w-32 bg-primary rounded-full mb-4"></div>
-                  <div class="h-6 w-2/3 bg-slate-400 rounded"></div>
-                </div>
-                <!-- Main content: text + bar chart + org chart -->
-                <div class="flex gap-8 flex-1 min-h-0">
-                  <!-- Text content -->
-                  <div class="flex-1 flex flex-col justify-center gap-4">
-                    <div class="h-5 w-full bg-slate-200 rounded"></div>
-                    <div class="h-5 w-5/6 bg-slate-200 rounded"></div>
-                    <div class="h-5 w-full bg-slate-200 rounded mb-2"></div>
-                    <div class="h-5 w-11/12 bg-slate-200 rounded"></div>
-                    <div class="h-5 w-4/5 bg-slate-200 rounded mb-4"></div>
-                    <div class="flex items-center gap-2"><div class="w-2.5 h-2.5 rounded-full bg-primary flex-shrink-0"></div><div class="h-5 w-4/5 bg-slate-200 rounded"></div></div>
-                    <div class="flex items-center gap-2"><div class="w-2.5 h-2.5 rounded-full bg-primary flex-shrink-0"></div><div class="h-5 w-3/5 bg-slate-200 rounded"></div></div>
-                    <div class="flex items-center gap-2"><div class="w-2.5 h-2.5 rounded-full bg-primary flex-shrink-0"></div><div class="h-5 w-5/6 bg-slate-200 rounded"></div></div>
-                  </div>
-                  <!-- Bar chart -->
-                  <div class="flex-1 bg-slate-50 rounded-lg p-6 flex flex-col">
-                    <div class="h-5 w-32 bg-slate-300 rounded mb-4"></div>
-                    <div class="flex items-end justify-center gap-4 flex-1 px-4">
-                      <div class="w-6 bg-primary/30 rounded-t" style="height:40%"></div>
-                      <div class="w-6 bg-primary/50 rounded-t" style="height:65%"></div>
-                      <div class="flex flex-col items-center" style="height:85%">
-                        <div class="text-xs font-bold text-primary whitespace-nowrap leading-none mb-1">+24%</div>
-                        <div class="w-px h-3 bg-primary/50"></div>
-                        <div class="w-6 bg-primary rounded-t flex-1"></div>
-                      </div>
-                      <div class="flex flex-col items-center" style="height:100%">
-                        <div class="text-xs font-bold text-primary whitespace-nowrap leading-none mb-1">+31%</div>
-                        <div class="w-px h-3 bg-primary/50"></div>
-                        <div class="w-6 bg-primary rounded-t flex-1"></div>
-                      </div>
-                      <div class="w-6 bg-slate-300 rounded-t" style="height:55%"></div>
-                      <div class="w-6 bg-slate-300 rounded-t" style="height:70%"></div>
-                    </div>
-                    <div class="h-px w-full bg-slate-200 mt-2"></div>
-                  </div>
-                  <!-- Org chart (narrow) with annotation connector -->
-                  <div class="w-72 bg-slate-50 rounded-lg p-5 flex flex-col items-center justify-center gap-2">
-                    <div class="w-28 h-10 bg-accent rounded text-xs text-white flex items-center justify-center font-bold">CEO</div>
-                    <div class="w-px h-4 bg-slate-300"></div>
-                    <div class="flex gap-4">
-                      <div class="flex flex-col items-center">
-                        <div class="w-24 h-9 bg-primary/40 rounded text-xs flex items-center justify-center font-semibold text-slate-700">Sales</div>
-                        <div class="w-px h-3 bg-slate-300"></div>
-                        <div class="flex gap-1.5">
-                          <div class="w-10 h-6 bg-slate-200 rounded"></div>
-                          <div class="w-10 h-6 bg-slate-200 rounded"></div>
-                        </div>
-                      </div>
-                      <div class="flex flex-col items-center">
-                        <div class="w-24 h-9 bg-primary/40 rounded text-xs flex items-center justify-center font-semibold text-slate-700">Eng</div>
-                        <div class="w-px h-3 bg-slate-300"></div>
-                        <div class="flex gap-1.5">
-                          <div class="w-10 h-6 bg-slate-200 rounded"></div>
-                          <div class="w-10 h-6 bg-slate-200 rounded"></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- Footer bar -->
-                <div class="flex items-center justify-between mt-5 pt-4 border-t border-slate-100">
-                  <div class="h-5 w-32 bg-slate-200 rounded"></div>
-                  <div class="flex items-center gap-3">
-                    <div class="h-5 w-24 bg-slate-200 rounded"></div>
-                    <div class="text-sm text-slate-400 font-semibold">3 / 12</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-spacer"></div>
+    <div class="hero-content">
+      <h1>Professional slides that work natively.</h1>
+      <p>
+        AI agents can't edit PowerPoint. Verso can.<br>
+        Say hi to native slide generation, in production, where you need it.
+      </p>
+      <div class="hero-buttons">
+        <a href="https://verso.fly.dev/playground/" class="hero-button">Get started</a>
+        <a href="demo.html" class="hero-button-secondary">Book a demo</a>
       </div>
-    </section>
 
-    <!-- Learn More -->
-    <section class="bg-slate-50 border-y border-slate-200 py-24">
-      <div class="max-w-7xl mx-auto px-6">
-        <div class="flex flex-col items-center text-center mb-16 scroll-animate">
-          <h2 class="text-4xl sm:text-5xl lg:text-7xl font-semibold tracking-tight leading-tight mb-6 whitespace-nowrap">
-            Intelligence where you need it
-          </h2>
-          <p class="text-2xl text-slate-600 max-w-7xl">
-            Natively integrated in PowerPoint.<br>
-            Verso works on shapes, texts, charts, tables. Just point, and ask.
-          </p>
+      <div class="backed-by">
+        <h3>Trusted by</h3>
+        <div class="investor-logos">
+          <img src="mckinsey.png" alt="McKinsey" class="investor-logo" style="filter: brightness(0);">
+          <img src="bcg.png" alt="BCG" class="investor-logo" style="filter: brightness(0); height: 28px;">
+          <img src="kearney.png" alt="Kearney" class="investor-logo" style="filter: brightness(0); height: 20px;">
+          <img src="bain.webp" alt="Bain" class="investor-logo" style="filter: brightness(0); height: 28px;">
+          <img src="ey.png" alt="EY" class="investor-logo" style="filter: brightness(0); height: 38px;">
+          <img src="bnp.png" alt="BNP Paribas" class="investor-logo" style="filter: brightness(0);">
         </div>
-
-        <!-- Three cards -->
-        <div class="grid md:grid-cols-3 gap-8 scroll-animate">
-          <!-- Card 1: Natively integrated -->
-          <div class="w-full bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden">
-            <div class="h-1/2 flex items-center justify-center p-8 bg-slate-50">
-              <svg class="w-24 h-24 text-primary" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 16.875h3.375m0 0h3.375m-3.375 0V13.5m0 3.375v3.375M6 10.5h2.25a2.25 2.25 0 002.25-2.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v2.25A2.25 2.25 0 006 10.5zm0 9.75h2.25A2.25 2.25 0 0010.5 18v-2.25a2.25 2.25 0 00-2.25-2.25H6a2.25 2.25 0 00-2.25 2.25V18A2.25 2.25 0 006 20.25zm9.75-9.75H18a2.25 2.25 0 002.25-2.25V6A2.25 2.25 0 0018 3.75h-2.25A2.25 2.25 0 0013.5 6v2.25a2.25 2.25 0 002.25 2.25z"/>
-              </svg>
-            </div>
-            <div class="h-1/2 flex flex-col items-center justify-center text-center p-6">
-              <h3 class="text-xl font-bold text-slate-900 mb-2">Natively integrated</h3>
-              <p class="text-base text-slate-600">Intelligence where you need it: natively integrated in PowerPoint.</p>
-            </div>
-          </div>
-
-          <!-- Card 2: Work off your assets -->
-          <div class="w-full bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden">
-            <div class="h-1/2 flex items-center justify-center p-8 bg-slate-50">
-              <svg class="w-24 h-24 text-primary" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.75V12A2.25 2.25 0 014.5 9.75h15A2.25 2.25 0 0121.75 12v.75m-8.69-6.44l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z"/>
-              </svg>
-            </div>
-            <div class="h-1/2 flex flex-col items-center justify-center text-center p-6">
-              <h3 class="text-xl font-bold text-slate-900 mb-2">No compromise on quality</h3>
-              <p class="text-base text-slate-600">Let AI do the heavy lifting, apply your final touch.</p>
-            </div>
-          </div>
-
-          <!-- Card 3: Generate ideas to work from -->
-          <div class="w-full bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden">
-            <div class="h-1/2 flex items-center justify-center p-8 bg-slate-50">
-              <svg class="w-24 h-24 text-primary" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456z"/>
-              </svg>
-            </div>
-            <div class="h-1/2 flex flex-col items-center justify-center text-center p-6">
-              <h3 class="text-xl font-bold text-slate-900 mb-2">Generate ideas to work from</h3>
-              <p class="text-base text-slate-600">Get AI-powered suggestions and content to kickstart your presentations.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Trusted by section -->
-        <div class="mt-24 scroll-animate">
-          <h3 class="text-2xl font-bold text-center text-slate-900 mb-12">
-            Trusted by the best teams worldwide
-          </h3>
-          <div class="flex flex-wrap items-center justify-center gap-12 px-4">
-            <!-- McKinsey -->
-            <div class="h-12 flex items-center grayscale hover:grayscale-0 transition opacity-60 hover:opacity-100">
-              <img src="mckinsey.png" alt="McKinsey" class="h-full w-auto object-contain">
-            </div>
-            <!-- BCG -->
-            <div class="h-12 flex items-center grayscale hover:grayscale-0 transition opacity-60 hover:opacity-100">
-              <img src="bcg.png" alt="BCG" class="w-auto object-contain" style="height: 80%;">
-            </div>
-            <!-- Kearney -->
-            <div class="h-12 flex items-center grayscale hover:grayscale-0 transition opacity-60 hover:opacity-100">
-              <img src="kearney.png" alt="Kearney" class="h-6 w-auto object-contain">
-            </div>
-            <!-- Bain -->
-            <div class="h-12 flex items-center grayscale hover:grayscale-0 transition opacity-60 hover:opacity-100">
-              <img src="bain.webp" alt="Bain" class="w-auto object-contain" style="height: 80%;">
-            </div>
-            <!-- EY -->
-            <div class="h-12 flex items-center grayscale hover:grayscale-0 transition opacity-60 hover:opacity-100">
-              <img src="ey.png" alt="EY" class="w-auto object-contain" style="height: 120%;">
-            </div>
-            <!-- BNP Paribas -->
-            <div class="h-12 flex items-center grayscale hover:grayscale-0 transition opacity-60 hover:opacity-100">
-              <img src="bnp.png" alt="BNP Paribas" class="h-full w-auto object-contain">
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Features -->
-    <section id="features" class="py-24" style="font-family: 'Poppins', sans-serif;">
-      <div class="max-w-7xl mx-auto px-6">
-        <div class="text-center mb-16 scroll-animate">
-          <h2 class="text-3xl sm:text-4xl font-bold" style="font-family: 'Spectral', serif;">Everything you need to build better decks, faster</h2>
-        </div>
-        <div class="grid md:grid-cols-2 gap-12 items-start">
-          <!-- Left: Animation Space -->
-          <div class="bg-slate-50 rounded-2xl p-12 h-[600px] flex items-center justify-center sticky top-24 relative overflow-hidden">
-            <div id="feature-animation" class="w-full h-full flex items-center justify-center relative">
-              <!-- Placeholder for feature 1 animation -->
-              <div class="feature-animation-content absolute inset-0 flex items-center justify-center text-center transition-all duration-500 opacity-100" data-feature="1">
-                <div>
-                  <svg class="w-40 h-40 text-primary mx-auto mb-6 animate-float" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456z"/></svg>
-                  <p class="text-slate-600 text-xl font-medium">Animation for Prompt to slides</p>
-                </div>
-              </div>
-              <div class="feature-animation-content absolute inset-0 flex items-center justify-center text-center transition-all duration-500 opacity-0 pointer-events-none" data-feature="2">
-                <div>
-                  <svg class="w-40 h-40 text-primary mx-auto mb-6 animate-float" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.098 19.902a3.75 3.75 0 005.304 0l6.401-6.402M6.75 21A3.75 3.75 0 013 17.25V4.125C3 3.504 3.504 3 4.125 3h5.25c.621 0 1.125.504 1.125 1.125v4.072M6.75 21a3.75 3.75 0 003.75-3.75V8.197M6.75 21h13.125c.621 0 1.125-.504 1.125-1.125v-5.25c0-.621-.504-1.125-1.125-1.125h-4.072"/></svg>
-                  <p class="text-slate-600 text-xl font-medium">Animation for Brand-perfect design</p>
-                </div>
-              </div>
-              <div class="feature-animation-content absolute inset-0 flex items-center justify-center text-center transition-all duration-500 opacity-0 pointer-events-none" data-feature="3">
-                <div>
-                  <svg class="w-40 h-40 text-primary mx-auto mb-6 animate-float" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 16.875h3.375m0 0h3.375m-3.375 0V13.5m0 3.375v3.375M6 10.5h2.25a2.25 2.25 0 002.25-2.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v2.25A2.25 2.25 0 006 10.5zm0 9.75h2.25A2.25 2.25 0 0010.5 18v-2.25a2.25 2.25 0 00-2.25-2.25H6a2.25 2.25 0 00-2.25 2.25V18A2.25 2.25 0 006 20.25zm9.75-9.75H18a2.25 2.25 0 002.25-2.25V6A2.25 2.25 0 0018 3.75h-2.25A2.25 2.25 0 0013.5 6v2.25a2.25 2.25 0 002.25 2.25z"/></svg>
-                  <p class="text-slate-600 text-xl font-medium">Animation for Powerpoint integration</p>
-                </div>
-              </div>
-              <div class="feature-animation-content absolute inset-0 flex items-center justify-center text-center transition-all duration-500 opacity-0 pointer-events-none" data-feature="4">
-                <div>
-                  <svg class="w-40 h-40 text-primary mx-auto mb-6 animate-float" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182"/></svg>
-                  <p class="text-slate-600 text-xl font-medium">Animation for Iterate instantly</p>
-                </div>
-              </div>
-              <div class="feature-animation-content absolute inset-0 flex items-center justify-center text-center transition-all duration-500 opacity-0 pointer-events-none" data-feature="5">
-                <div>
-                  <svg class="w-40 h-40 text-primary mx-auto mb-6 animate-float" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
-                  <p class="text-slate-600 text-xl font-medium">Animation for Enterprise ready</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Right: Feature Items Column -->
-          <div class="space-y-2">
-            <!-- Feature 1 -->
-            <button onclick="switchFeature(1)" class="feature-item w-full text-left p-6 rounded-xl bg-white border-2 border-primary hover:shadow-lg transition">
-              <div class="flex items-start gap-4">
-                <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456z"/></svg>
-                </div>
-                <div>
-                  <h3 class="font-bold text-lg mb-2">Prompt to slides</h3>
-                  <p class="text-slate-600 text-sm">Describe what you need. Verso generates a full deck in seconds.</p>
-                </div>
-              </div>
-            </button>
-
-            <!-- Feature 2 -->
-            <button onclick="switchFeature(2)" class="feature-item w-full text-left p-6 rounded-xl bg-slate-50 border-2 border-transparent hover:border-primary hover:shadow-lg transition">
-              <div class="flex items-start gap-4">
-                <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.098 19.902a3.75 3.75 0 005.304 0l6.401-6.402M6.75 21A3.75 3.75 0 013 17.25V4.125C3 3.504 3.504 3 4.125 3h5.25c.621 0 1.125.504 1.125 1.125v4.072M6.75 21a3.75 3.75 0 003.75-3.75V8.197M6.75 21h13.125c.621 0 1.125-.504 1.125-1.125v-5.25c0-.621-.504-1.125-1.125-1.125h-4.072"/></svg>
-                </div>
-                <div>
-                  <h3 class="font-bold text-lg mb-2">Brand-perfect design</h3>
-                  <p class="text-slate-600 text-sm">Matches your existing themes, slidemasters, and colors.</p>
-                </div>
-              </div>
-            </button>
-
-            <!-- Feature 3 -->
-            <button onclick="switchFeature(3)" class="feature-item w-full text-left p-6 rounded-xl bg-slate-50 border-2 border-transparent hover:border-primary hover:shadow-lg transition">
-              <div class="flex items-start gap-4">
-                <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182"/></svg>
-                </div>
-                <div>
-                  <h3 class="font-bold text-lg mb-2">Iterate instantly</h3>
-                  <p class="text-slate-600 text-sm whitespace-nowrap">Refine any slide with follow-up prompts. Change tone, layout, content.</p>
-                </div>
-              </div>
-            </button>
-
-            <!-- Feature 4 -->
-            <button onclick="switchFeature(4)" class="feature-item w-full text-left p-6 rounded-xl bg-slate-50 border-2 border-transparent hover:border-primary hover:shadow-lg transition">
-              <div class="flex items-start gap-4">
-                <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 16.875h3.375m0 0h3.375m-3.375 0V13.5m0 3.375v3.375M6 10.5h2.25a2.25 2.25 0 002.25-2.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v2.25A2.25 2.25 0 006 10.5zm0 9.75h2.25A2.25 2.25 0 0010.5 18v-2.25a2.25 2.25 0 00-2.25-2.25H6a2.25 2.25 0 00-2.25 2.25V18A2.25 2.25 0 006 20.25zm9.75-9.75H18a2.25 2.25 0 002.25-2.25V6A2.25 2.25 0 0018 3.75h-2.25A2.25 2.25 0 0013.5 6v2.25a2.25 2.25 0 002.25 2.25z"/></svg>
-                </div>
-                <div>
-                  <h3 class="font-bold text-lg mb-2">Powerpoint integration</h3>
-                  <p class="text-slate-600 text-sm">Works directly inside PowerPoint. No switching between tools.</p>
-                </div>
-              </div>
-            </button>
-
-            <!-- Feature 5 -->
-            <button onclick="switchFeature(5)" class="feature-item w-full text-left p-6 rounded-xl bg-slate-50 border-2 border-transparent hover:border-primary hover:shadow-lg transition">
-              <div class="flex items-start gap-4">
-                <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
-                </div>
-                <div>
-                  <h3 class="font-bold text-lg mb-2">Enterprise ready</h3>
-                  <p class="text-slate-600 text-sm">SOC 2 and GDPR compliant, SSO & MFA login. Your data stays yours.</p>
-                </div>
-              </div>
-            </button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FAQ -->
-    <section id="faq" class="py-24 bg-slate-50">
-      <div class="max-w-7xl mx-auto px-6">
-        <div class="text-center mb-16 scroll-animate">
-          <h2 class="text-3xl sm:text-4xl font-bold">Frequently asked questions</h2>
-        </div>
-        <div class="grid md:grid-cols-2 gap-6 items-start scroll-animate">
-          <details class="bg-white rounded-xl border border-slate-200 px-6 py-4 group">
-            <summary class="flex justify-between items-center cursor-pointer font-semibold text-lg">
-              How does VersoAI match my brand?
-              <svg class="chevron w-5 h-5 text-slate-400 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
-            </summary>
-            <p class="mt-3 text-slate-600">VersoAI reads your existing PowerPoint slidemasters, themes, and color palettes. Every generated slide uses your fonts, layouts, and brand colors — so new slides are indistinguishable from ones you made yourself.</p>
-          </details>
-          <details class="bg-white rounded-xl border border-slate-200 px-6 py-4 group">
-            <summary class="flex justify-between items-center cursor-pointer font-semibold text-lg">
-              Do I need to install anything?
-              <svg class="chevron w-5 h-5 text-slate-400 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
-            </summary>
-            <p class="mt-3 text-slate-600">The web chat works in any browser — no installation needed. The PowerPoint add-in is a one-click install from the Office Add-ins store.</p>
-          </details>
-          <details class="bg-white rounded-xl border border-slate-200 px-6 py-4 group">
-            <summary class="flex justify-between items-center cursor-pointer font-semibold text-lg">
-              Is my data secure?
-              <svg class="chevron w-5 h-5 text-slate-400 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
-            </summary>
-            <p class="mt-3 text-slate-600">Yes. VersoAI is SOC 2 compliant with end-to-end encryption. We never train on your data, and all files are deleted after processing unless you choose to save them.</p>
-          </details>
-          <details class="bg-white rounded-xl border border-slate-200 px-6 py-4 group">
-            <summary class="flex justify-between items-center cursor-pointer font-semibold text-lg">
-              Can I edit the generated slides?
-              <svg class="chevron w-5 h-5 text-slate-400 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
-            </summary>
-            <p class="mt-3 text-slate-600">Absolutely. Every slide is a fully editable native PowerPoint element. Move shapes, change text, adjust layouts — it's your deck.</p>
-          </details>
-          <details class="bg-white rounded-xl border border-slate-200 px-6 py-4 group">
-            <summary class="flex justify-between items-center cursor-pointer font-semibold text-lg">
-              What file formats are supported?
-              <svg class="chevron w-5 h-5 text-slate-400 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
-            </summary>
-            <p class="mt-3 text-slate-600">VersoAI outputs standard .pptx files that work in PowerPoint, Google Slides, and Keynote. You can also export to PDF.</p>
-          </details>
-        </div>
-      </div>
-    </section>
-
-    <!-- Final CTA -->
-    <section class="py-24 bg-slate-900 relative overflow-hidden">
-      <div class="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-900 to-accent/20 -z-0"></div>
-      <div class="max-w-3xl mx-auto px-6 text-center relative z-10 scroll-animate">
-        <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">Ready to build your next deck?</h2>
-        <p class="text-slate-400 text-lg mb-8">Start working on your presentations in seconds. No credit card required.</p>
-        <a href="https://verso.fly.dev/playground/" class="inline-block bg-accent text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-accent-dark transition hover:-translate-y-0.5 animate-pulse-glow">Get started for free</a>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- Footer -->
-  <footer class="bg-slate-950 text-slate-400 py-12">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
-        <div>
-          <div class="text-white font-bold text-lg mb-4">Verso<span class="text-accent">AI</span></div>
-          <p class="text-sm">Professional presentations, powered by AI.</p>
-        </div>
-        <div>
-          <div class="font-semibold text-white text-sm mb-3">Product</div>
-          <a href="index.html#hero" class="block text-sm mb-2 hover:text-white transition">Why Verso</a>
-          <a href="how-it-works.html" class="block text-sm mb-2 hover:text-white transition">How it works</a>
-          <a href="pricing.html" class="block text-sm hover:text-white transition">Pricing</a>
-        </div>
-        <div>
-          <div class="font-semibold text-white text-sm mb-3">Company</div>
-          <a href="company.html" class="block text-sm mb-2 hover:text-white transition">About us</a>
-          <a href="#" class="block text-sm mb-2 hover:text-white transition">Blog</a>
-          <a href="#" class="block text-sm hover:text-white transition">Careers</a>
-        </div>
-        <div>
-          <div class="font-semibold text-white text-sm mb-3">Connect</div>
-          <a href="https://x.com/AymericRoucher" target="_blank" rel="noopener" class="block text-sm mb-2 hover:text-white transition">X (Twitter)</a>
-          <a href="https://www.linkedin.com/in/a-roucher/" target="_blank" rel="noopener" class="block text-sm mb-2 hover:text-white transition">LinkedIn</a>
-          <a href="#" class="block text-sm mb-2 hover:text-white transition">Discord</a>
-          <a href="#" class="block text-sm hover:text-white transition">GitHub</a>
-        </div>
-      </div>
-      <div class="border-t border-slate-800 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm">
-        <span>&copy; 2026 Verso.ai. All rights reserved.</span>
       </div>
     </div>
+    <div class="hero-spacer"></div>
+  </section>
+
+  <!-- Intelligence Section -->
+  <section class="intelligence-section" id="intelligence">
+    <div class="intelligence-content">
+      <h2>Intelligence where you need it</h2>
+      <p class="subtitle">Natively integrated in PowerPoint. Verso works on shapes, texts, charts, tables.<br>Just point, and ask.</p>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-image">
+            <!-- Product image placeholder for Natively integrated -->
+          </div>
+          <h3>Natively integrated</h3>
+          <p>Intelligence where you need it: natively integrated in PowerPoint.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-image">
+            <!-- Product image placeholder for No compromise on quality -->
+          </div>
+          <h3>No compromise on quality</h3>
+          <p>Let AI do the heavy lifting, apply your final touch.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-image">
+            <!-- Product image placeholder for Generate ideas -->
+          </div>
+          <h3>Generate ideas to work from</h3>
+          <p>Get AI-powered suggestions and content to kickstart your presentations.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Capabilities Section -->
+  <section class="capabilities-section">
+    <div class="capabilities-content">
+      <h2>Everything you need to build better decks, faster</h2>
+
+      <div class="capability-item">
+        <div class="capability-text">
+          <h3>Prompt to slides</h3>
+          <p>Describe what you need. Verso generates a full deck in seconds.</p>
+        </div>
+        <div class="capability-image">
+          <div class="capability-image-placeholder">
+            <!-- Image placeholder for Prompt to slides -->
+          </div>
+        </div>
+      </div>
+
+      <div class="capability-item">
+        <div class="capability-text">
+          <h3>Brand-perfect design</h3>
+          <p>Matches your existing themes, slidemasters, and colors.</p>
+        </div>
+        <div class="capability-image">
+          <div class="capability-image-placeholder">
+            <!-- Image placeholder for Brand-perfect design -->
+          </div>
+        </div>
+      </div>
+
+      <div class="capability-item">
+        <div class="capability-text">
+          <h3>Iterate instantly</h3>
+          <p>Refine any slide with follow-up prompts. Change tone, layout, content.</p>
+        </div>
+        <div class="capability-image">
+          <div class="capability-image-placeholder">
+            <!-- Image placeholder for Iterate instantly -->
+          </div>
+        </div>
+      </div>
+
+      <div class="capability-item">
+        <div class="capability-text">
+          <h3>PowerPoint integration</h3>
+          <p>Works directly inside PowerPoint. No switching between tools.</p>
+        </div>
+        <div class="capability-image">
+          <div class="capability-image-placeholder">
+            <!-- Image placeholder for PowerPoint integration -->
+          </div>
+        </div>
+      </div>
+
+      <div class="capability-item">
+        <div class="capability-text">
+          <h3>Enterprise ready</h3>
+          <p>SOC 2 and GDPR compliant, SSO & MFA login. Your data stays yours.</p>
+        </div>
+        <div class="capability-image">
+          <div class="capability-image-placeholder">
+            <!-- Image placeholder for Enterprise ready -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Models Section -->
+  <section class="models-section" id="models">
+    <div class="models-content">
+      <h2>Model performance at the core</h2>
+      <p>Our harnesses outperform competition on all tested benchmarks. We take pride in building AI tools that deliver value and efficiency gains. See for yourself, test our product for free.</p>
+      <div class="models-illustration">
+        <!-- Illustration placeholder 16:9 -->
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="cta-banner">
+    <div class="cta-banner-content">
+      <h2>Start working on your presentations in seconds.<br>No credit cards needed.</h2>
+      <div class="cta-banner-buttons">
+        <a href="https://verso.fly.dev/playground/" class="hero-button">Get started</a>
+        <a href="demo.html" class="hero-button-secondary">Book a demo</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-brand">
+      <img src="origami.png" alt="VersoAI Logo" style="filter: brightness(0) invert(1);">
+      <span>VersoAI</span>
+    </div>
+    <div class="footer-text">
+      &copy; 2026 VersoAI. All rights reserved.
+    </div>
   </footer>
-
-  <script>
-    // Mobile menu
-    document.getElementById('menu-toggle').addEventListener('click', () => {
-      document.getElementById('mobile-menu').classList.toggle('hidden');
-    });
-    document.querySelectorAll('#mobile-menu a').forEach(link => {
-      link.addEventListener('click', () => document.getElementById('mobile-menu').classList.add('hidden'));
-    });
-
-    // Scroll animations
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
-        if (entry.isIntersecting) {
-          entry.target.style.transitionDelay = `${i * 80}ms`;
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.scroll-animate').forEach(el => observer.observe(el));
-
-    // Nav scroll behavior
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-      } else {
-        navbar.classList.remove('scrolled');
-      }
-    });
-
-    // FAQ accordion - close others when one opens
-    const faqDetails = document.querySelectorAll('#faq details');
-    faqDetails.forEach((detail) => {
-      detail.addEventListener('toggle', () => {
-        if (detail.open) {
-          faqDetails.forEach((otherDetail) => {
-            if (otherDetail !== detail && otherDetail.open) {
-              otherDetail.open = false;
-            }
-          });
-        }
-      });
-    });
-
-    // Highlight nav links based on scroll position
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('nav a[href^="#"]');
-
-    window.addEventListener('scroll', () => {
-      let current = '';
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        if (window.scrollY >= sectionTop - 100) {
-          current = section.getAttribute('id');
-        }
-      });
-
-      navLinks.forEach(link => {
-        link.classList.remove('navbar-link-primary', 'font-semibold', 'text-primary');
-        link.classList.add('navbar-link');
-        if (link.getAttribute('href') === `#${current}`) {
-          link.classList.remove('navbar-link');
-          link.classList.add('navbar-link-primary', 'font-semibold');
-        }
-      });
-    });
-
-    // Feature switching function
-    function switchFeature(featureNumber) {
-      // Fade out all animation contents
-      document.querySelectorAll('.feature-animation-content').forEach(content => {
-        content.classList.remove('opacity-100');
-        content.classList.add('opacity-0', 'pointer-events-none');
-      });
-
-      // Fade in selected animation
-      const selectedContent = document.querySelector(`[data-feature="${featureNumber}"]`);
-      setTimeout(() => {
-        selectedContent.classList.remove('opacity-0', 'pointer-events-none');
-        selectedContent.classList.add('opacity-100');
-      }, 100);
-
-      // Update button styles with progress indicator
-      document.querySelectorAll('.feature-item').forEach((item, index) => {
-        const progressBar = item.querySelector('.feature-progress');
-        if (index + 1 === featureNumber) {
-          item.classList.remove('bg-slate-50', 'border-transparent');
-          item.classList.add('bg-white', 'border-primary');
-          if (progressBar) progressBar.classList.remove('w-0');
-          if (progressBar) progressBar.classList.add('w-full');
-        } else {
-          item.classList.remove('bg-white', 'border-primary');
-          item.classList.add('bg-slate-50', 'border-transparent');
-          if (progressBar) progressBar.classList.remove('w-full');
-          if (progressBar) progressBar.classList.add('w-0');
-        }
-      });
-    }
-  </script>
 
 </body>
 </html>
