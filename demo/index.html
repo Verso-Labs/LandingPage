@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth scroll-pt-[100px]">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book a Demo — Verso AI</title>
+  <meta name="description" content="Request a demo of Verso AI's native PowerPoint generation platform.">
+  <link rel="icon" href="../assets/origami.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;500;600;700&family=Spectral:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'brand': '#1a1a1a',
+            'brand-bg': '#f8f8f8',
+            'brand-muted': '#666666',
+            'brand-light': '#999999',
+            'brand-border': '#e0e0e0',
+            'brand-dark': '#2a2a2a',
+          },
+          fontFamily: {
+            'display': ['"Playfair Display"', 'serif'],
+            'heading': ['"Spectral"', 'serif'],
+            'body': ['"Inter"', 'sans-serif'],
+          },
+          borderRadius: {
+            'pill': '50px',
+          },
+          maxWidth: {
+            'narrow': '800px',
+          },
+        }
+      }
+    }
+  </script>
+</head>
+<body class="font-body text-brand bg-brand-bg overflow-x-hidden">
+
+  <!-- Demo Form Section -->
+  <section class="min-h-screen flex flex-col justify-center items-center py-[60px] px-[30px] md:py-20 md:px-[60px] relative overflow-hidden">
+    <div class="absolute inset-0 bg-center bg-[length:100%] opacity-50 z-0" style="background-image: url('../assets/monet8.jpg')"></div>
+    <div class="max-w-[600px] w-full bg-white rounded-2xl py-10 px-[30px] md:p-[60px] border-2 border-brand-border shadow-md relative z-10">
+      <h1 class="font-display text-[32px] md:text-[42px] font-normal leading-tight text-brand mb-4 text-center">Book a demo</h1>
+      <p class="text-lg leading-relaxed text-brand-muted mb-10 text-center">See how Verso can you hours in quality slide work.<br>We'd love to show you our product.</p>
+
+      <form class="flex flex-col gap-6" id="demoForm">
+        <div class="flex flex-col gap-2">
+          <input type="email" id="email" name="email" placeholder="your work email" required class="py-3.5 px-4 text-base border-2 border-brand-border rounded-lg font-body transition-colors duration-300 focus:outline-none focus:border-brand">
+        </div>
+
+        <button type="submit" class="w-full bg-brand text-white py-4 border-none rounded-pill text-base font-semibold cursor-pointer transition duration-300 font-body hover:-translate-y-0.5 hover:shadow-lg">Request a demo</button>
+      </form>
+
+      <a href="../" class="block text-center mt-5 font-heading text-sm text-brand-muted no-underline transition-colors duration-300 hover:text-brand">Back to homepage</a>
+
+      <script>
+        document.getElementById('demoForm').addEventListener('submit', function(e) {
+          e.preventDefault();
+          const email = document.getElementById('email').value;
+          const subject = 'Demo Request';
+          const body = `User ${email} has requested a demo`;
+          const mailtoLink = `mailto:aymeric@get-verso.ai,adrien@get-verso.ai?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+          window.location.href = mailtoLink;
+        });
+      </script>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-black py-[30px] px-[30px] md:py-10 md:px-[60px] flex flex-col md:flex-row gap-5 md:gap-0 items-center md:justify-between text-center md:text-left">
+    <div class="flex items-center gap-3">
+      <img src="../assets/origami.png" alt="Verso AI Logo" class="w-8 h-8" style="filter: brightness(0) invert(1);">
+      <span class="font-heading text-lg font-semibold text-white">Verso AI</span>
+    </div>
+    <div class="text-sm text-brand-light">
+      &copy; 2026 Verso AI. All rights reserved.
+    </div>
+  </footer>
+
+</body>
+</html>
