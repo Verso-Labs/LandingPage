@@ -427,10 +427,34 @@
       transform: rotate(45deg);
     }
 
+    .faq-item .faq-content {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .faq-item[open] .faq-content {
+      grid-template-rows: 1fr;
+    }
+
+    .faq-item .faq-content > div {
+      overflow: hidden;
+      transition: opacity 0.3s ease;
+    }
+
+    .faq-item:not([open]) .faq-content > div {
+      opacity: 0;
+    }
+
+    .faq-item[open] .faq-content > div {
+      opacity: 1;
+    }
+
     .faq-item p {
       padding: 0 24px 16px;
       color: #666;
       line-height: 1.8;
+      margin: 0;
     }
 
     /* CTA Banner */
@@ -754,27 +778,47 @@
       <div class="faq-grid">
         <details class="faq-item">
           <summary>What are credits?</summary>
-          <p>Credits are units of computation used by our AI. On average, generating a complete 10-slide presentation uses approximately 1-2M credits, depending on complexity and content length.</p>
+          <div class="faq-content">
+            <div>
+              <p>Credits are units of computation used by our AI. On average, generating a complete 10-slide presentation uses approximately 1-2M credits, depending on complexity and content length.</p>
+            </div>
+          </div>
         </details>
 
         <details class="faq-item">
           <summary>What happens if I run out of credits?</summary>
-          <p>You can easily purchase additional credit packs or upgrade to a higher tier. We'll notify you when you're approaching your limit so you're never caught off guard.</p>
+          <div class="faq-content">
+            <div>
+              <p>You can easily purchase additional credit packs or upgrade to a higher tier. We'll notify you when you're approaching your limit so you're never caught off guard.</p>
+            </div>
+          </div>
         </details>
 
         <details class="faq-item">
           <summary>Can I change plans at any time?</summary>
-          <p>Yes! You can upgrade or downgrade your plan at any time. Changes take effect immediately, and we'll prorate any billing adjustments.</p>
+          <div class="faq-content">
+            <div>
+              <p>Yes! You can upgrade or downgrade your plan at any time. Changes take effect immediately, and we'll prorate any billing adjustments.</p>
+            </div>
+          </div>
         </details>
 
         <details class="faq-item">
           <summary>Do credits roll over?</summary>
-          <p>Unused credits expire at the end of each monthly billing period. We recommend choosing a plan that matches your typical usage to maximize value.</p>
+          <div class="faq-content">
+            <div>
+              <p>Unused credits expire at the end of each monthly billing period. We recommend choosing a plan that matches your typical usage to maximize value.</p>
+            </div>
+          </div>
         </details>
 
         <details class="faq-item">
           <summary>Is there a free trial?</summary>
-          <p>Yes! We offer a 14-day free trial with 5M credits to test all features. No credit card required to start.</p>
+          <div class="faq-content">
+            <div>
+              <p>Yes! We offer a 14-day free trial with 5M credits to test all features. No credit card required to start.</p>
+            </div>
+          </div>
         </details>
       </div>
     </div>
