@@ -1,0 +1,39 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Book a Demo — Verso AI" description="Request a demo of Verso AI's native PowerPoint generation platform.">
+
+  <!-- Demo Form Section -->
+  <section class="min-h-screen flex flex-col justify-center items-center py-[60px] px-[30px] nav:py-20 nav:px-[60px] relative overflow-hidden">
+    <div class="absolute inset-0 bg-center bg-[length:100%] opacity-50 z-0" style="background-image: url('/monet8.jpg')"></div>
+    <div class="max-w-[600px] w-full bg-white rounded-2xl py-10 px-[30px] nav:p-[60px] border-2 border-brand-border shadow-md relative z-10">
+      <h1 class="font-display text-[32px] nav:text-[42px] font-normal leading-tight text-brand mb-4 text-center">Book a demo</h1>
+      <p class="text-lg leading-relaxed text-brand-muted mb-10 text-center">See how Verso can you hours in quality slide work.<br />We'd love to show you our product.</p>
+
+      <form class="flex flex-col gap-6" id="demoForm">
+        <div class="flex flex-col gap-2">
+          <input type="email" id="email" name="email" placeholder="your work email" required class="py-3.5 px-4 text-base border-2 border-brand-border rounded-lg font-body transition-colors duration-300 focus:outline-none focus:border-brand" />
+        </div>
+
+        <button type="submit" class="w-full bg-brand text-white py-4 border-none rounded-pill text-base font-semibold cursor-pointer transition duration-300 font-body hover:-translate-y-0.5 hover:shadow-lg">Request a demo</button>
+      </form>
+
+      <a href="/" class="block text-center mt-5 font-heading text-sm text-brand-muted no-underline transition-colors duration-300 hover:text-brand">Back to homepage</a>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<script>
+  document.getElementById('demoForm')?.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const email = (document.getElementById('email') as HTMLInputElement).value;
+    const subject = 'Demo Request';
+    const body = `User ${email} has requested a demo`;
+    const mailtoLink = `mailto:aymeric@get-verso.ai,adrien@get-verso.ai?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailtoLink;
+  });
+</script>

@@ -1,0 +1,91 @@
+---
+interface Props {
+  activePage?: string;
+}
+
+const { activePage = '' } = Astro.props;
+
+const navLinks = [
+  { href: '/', label: 'Home' },
+  { href: '/#intelligence', label: 'Features' },
+  { href: '/#models', label: 'Models' },
+  { href: '/pricing/', label: 'Pricing' },
+  { href: '/demo/', label: 'Contact Us' },
+];
+---
+
+<nav class="sticky top-0 z-[1002] grid grid-cols-[auto_1fr] nav:grid-cols-[1fr_auto_1fr] items-center py-5 px-[30px] nav:px-[60px] bg-brand-bg font-heading relative overflow-hidden">
+  <a href="/" class="flex items-center gap-2.5 text-base font-semibold text-brand no-underline transition-colors duration-300 hover:text-black">
+    <img src="/origami.png" alt="Verso AI Logo" class="w-[29px] h-[29px]" style="filter: brightness(0) saturate(100%) invert(6%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(99%) contrast(99%)" />
+    <span class="font-heading">Verso AI</span>
+  </a>
+  <ul class="hidden nav:flex gap-10 list-none justify-center m-0 p-0">
+    {navLinks.map(link => (
+      <li>
+        <a
+          href={link.href}
+          class:list={[
+            'no-underline text-sm font-medium transition-colors duration-300 hover:text-brand',
+            activePage === link.label ? 'text-brand' : 'text-brand-muted',
+          ]}
+        >
+          {link.label}
+        </a>
+      </li>
+    ))}
+  </ul>
+  <div class="hidden nav:flex items-center gap-3 justify-end">
+    <a href="https://verso.fly.dev/playground/" class="bg-brand text-white border-none py-2.5 px-5 text-sm font-medium cursor-pointer no-underline rounded-pill transition duration-300 hover:-translate-y-px hover:shadow-md">Get started</a>
+    <a href="/demo/" class="bg-brand-bg text-brand border-2 border-brand py-2.5 px-5 text-sm font-medium cursor-pointer no-underline rounded-pill transition duration-300 hover:bg-brand hover:text-white hover:-translate-y-px hover:shadow-md">Book a demo</a>
+  </div>
+  <button class="burger-menu group flex nav:hidden flex-col justify-center items-center bg-transparent border-none cursor-pointer p-2.5 z-[1001] w-10 h-10 relative justify-self-end" aria-label="Toggle menu">
+    <span class="block w-[25px] h-[3px] bg-brand rounded-[3px] transition-all duration-300 ease-in-out absolute top-[10px] group-[.active]:top-[18.5px] group-[.active]:rotate-45"></span>
+    <span class="block w-[25px] h-[3px] bg-brand rounded-[3px] transition-all duration-300 ease-in-out absolute top-[18.5px] group-[.active]:-rotate-45"></span>
+    <span class="block w-[25px] h-[3px] bg-brand rounded-[3px] transition-all duration-300 ease-in-out absolute top-[27px] group-[.active]:opacity-0"></span>
+  </button>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu block nav:hidden fixed top-[80px] left-0 right-0 bg-brand-bg px-[30px] z-[1000] max-h-0 overflow-hidden transition duration-300 [&.active]:max-h-[500px] [&.active]:py-5">
+  <ul class="list-none flex flex-col gap-4">
+    {navLinks.map(link => (
+      <li>
+        <a
+          href={link.href}
+          class:list={[
+            'no-underline text-base font-medium font-heading transition-colors duration-300 block py-2 hover:text-brand',
+            activePage === link.label ? 'text-brand' : 'text-brand-muted',
+          ]}
+        >
+          {link.label}
+        </a>
+      </li>
+    ))}
+    <li><a href="https://verso.fly.dev/playground/" class="bg-brand text-white border-none py-3 px-5 text-sm font-medium rounded-pill text-center transition duration-300 block no-underline hover:-translate-y-px hover:shadow-md">Get started</a></li>
+    <li><a href="/demo/" class="bg-brand-bg text-brand border-2 border-brand py-3 px-5 text-sm font-medium rounded-pill text-center transition duration-300 block no-underline hover:bg-brand hover:text-white hover:-translate-y-px hover:shadow-md">Book a demo</a></li>
+  </ul>
+</div>
+
+<script>
+  const burgerMenu = document.querySelector('.burger-menu');
+  const mobileMenu = document.querySelector('.mobile-menu');
+
+  burgerMenu?.addEventListener('click', () => {
+    burgerMenu.classList.toggle('active');
+    mobileMenu?.classList.toggle('active');
+  });
+
+  document.querySelectorAll('.mobile-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+      burgerMenu?.classList.remove('active');
+      mobileMenu?.classList.remove('active');
+    });
+  });
+
+  document.addEventListener('click', (e) => {
+    if (burgerMenu && mobileMenu && !burgerMenu.contains(e.target as Node) && !mobileMenu.contains(e.target as Node)) {
+      burgerMenu.classList.remove('active');
+      mobileMenu.classList.remove('active');
+    }
+  });
+</script>

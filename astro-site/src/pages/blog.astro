@@ -1,0 +1,18 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import CtaBanner from '../components/CtaBanner.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Blog — Verso AI" description="Stay tuned for the latest updates from Verso AI.">
+  <Nav />
+
+  <!-- Content Section -->
+  <section class="min-h-screen flex flex-col justify-center items-center pt-[100px] px-[30px] pb-[60px] nav:py-20 nav:px-[60px] text-center">
+    <h1 class="font-heading text-[13px] nav:text-[19px] font-normal leading-tight text-brand">Stay tuned...</h1>
+  </section>
+
+  <CtaBanner />
+  <Footer />
+</Layout>

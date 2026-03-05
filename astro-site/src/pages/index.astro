@@ -1,0 +1,135 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import CtaBanner from '../components/CtaBanner.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Verso AI" description="Native PowerPoint manipulation powered by frontier AI. Built for consultants and strategy teams.">
+  <Nav activePage="Home" />
+
+  <!-- Hero Section -->
+  <section class="min-h-[calc(100vh-50px)] grid grid-rows-[0.5fr_auto_3fr] px-[30px] nav:px-[60px] relative">
+    <div></div>
+    <div class="max-w-[1080px] w-[90%] bg-gradient-to-br from-[rgba(230,235,240,0.4)] to-[rgba(240,230,235,0.4)] rounded-3xl py-10 px-[30px] nav:py-[39px] nav:px-[72px] text-center relative overflow-hidden mx-auto self-center">
+      <div class="absolute inset-0 bg-cover bg-center opacity-[0.35] z-0" style="background-image: url('/monet.webp')"></div>
+      <h1 class="relative z-10 font-display text-[42px] nav:text-[64px] font-normal leading-tight text-brand mb-8">Professional slides that work natively.</h1>
+      <p class="relative z-10 font-display text-[18px] nav:text-[20px] leading-relaxed text-brand-dark mb-12 max-w-[600px] mx-auto">
+        AI agents can't edit PowerPoint. Verso can.<br />
+        Say hi to native slide generation, in production, where you need it.
+      </p>
+      <div class="relative z-10 flex flex-col nav:flex-row gap-3 nav:gap-4 justify-center items-center">
+        <a href="https://verso.fly.dev/playground/" class="w-full nav:w-auto inline-block bg-brand text-white py-4 px-10 rounded-pill no-underline text-sm font-medium transition duration-300 hover:-translate-y-0.5 hover:shadow-lg text-center">Get started</a>
+        <a href="/demo/" class="w-full nav:w-auto inline-block bg-brand-bg text-brand border-2 border-brand py-4 px-10 rounded-pill no-underline text-sm font-medium transition duration-300 hover:bg-brand hover:text-white hover:-translate-y-0.5 hover:shadow-lg text-center">Book a demo</a>
+      </div>
+
+      <div class="relative z-10 mt-[60px] text-center">
+        <h3 class="text-[11px] font-semibold tracking-[2px] uppercase text-brand-muted mb-6">Trusted by</h3>
+        <div class="flex justify-center items-center gap-[42px] flex-wrap">
+          <img src="/mckinsey.png" alt="McKinsey" class="h-8 opacity-80 transition-opacity duration-300 hover:opacity-100" style="filter: brightness(0);" />
+          <img src="/bcg.png" alt="BCG" class="h-[28px] opacity-80 transition-opacity duration-300 hover:opacity-100" style="filter: brightness(0);" />
+          <img src="/kearney.png" alt="Kearney" class="h-[20px] opacity-80 transition-opacity duration-300 hover:opacity-100" style="filter: brightness(0);" />
+          <img src="/bain.webp" alt="Bain" class="h-[28px] opacity-80 transition-opacity duration-300 hover:opacity-100" style="filter: brightness(0);" />
+          <img src="/ey.png" alt="EY" class="h-[38px] opacity-80 transition-opacity duration-300 hover:opacity-100" style="filter: brightness(0);" />
+          <img src="/bnp.png" alt="BNP Paribas" class="h-8 opacity-80 transition-opacity duration-300 hover:opacity-100" style="filter: brightness(0);" />
+        </div>
+      </div>
+    </div>
+    <div></div>
+  </section>
+
+  <!-- Intelligence Section -->
+  <section class="py-[60px] px-[30px] nav:py-20 nav:px-[60px] bg-white" id="intelligence">
+    <div class="max-w-[1200px] mx-auto text-center">
+      <h2 class="font-display text-[36px] nav:text-[48px] font-normal leading-tight text-brand mb-5">Intelligence where you need it</h2>
+      <p class="text-lg leading-relaxed text-brand-muted mb-10 max-w-narrow mx-auto">Natively integrated in PowerPoint. Verso works on shapes, texts, charts, tables.<br />Just point, and ask.</p>
+
+      <div class="grid grid-cols-1 nav:grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-10">
+        <div class="text-center p-[30px]">
+          <div class="w-full h-[240px] bg-[#e8e8e8] rounded-2xl mb-8 overflow-hidden flex items-center justify-center border-2 border-brand-border"></div>
+          <h3 class="font-heading text-2xl font-semibold mb-4 text-brand">Natively integrated</h3>
+          <p class="text-base leading-relaxed text-brand-muted">Intelligence where you need it: natively integrated in PowerPoint.</p>
+        </div>
+        <div class="text-center p-[30px]">
+          <div class="w-full h-[240px] bg-[#e8e8e8] rounded-2xl mb-8 overflow-hidden flex items-center justify-center border-2 border-brand-border"></div>
+          <h3 class="font-heading text-2xl font-semibold mb-4 text-brand">No compromise on quality</h3>
+          <p class="text-base leading-relaxed text-brand-muted">Let AI do the heavy lifting, apply your final touch.</p>
+        </div>
+        <div class="text-center p-[30px]">
+          <div class="w-full h-[240px] bg-[#e8e8e8] rounded-2xl mb-8 overflow-hidden flex items-center justify-center border-2 border-brand-border"></div>
+          <h3 class="font-heading text-2xl font-semibold mb-4 text-brand">Generate ideas to work from</h3>
+          <p class="text-base leading-relaxed text-brand-muted">Get AI-powered suggestions and content to kickstart your presentations.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Capabilities Section -->
+  <section class="py-[60px] px-[30px] nav:py-20 nav:px-[60px] bg-gradient-to-br from-[rgba(230,235,240,0.3)] to-[rgba(240,230,235,0.3)]">
+    <div class="max-w-[1200px] mx-auto">
+      <h2 class="font-display text-[36px] nav:text-[48px] font-normal leading-tight text-brand mb-[60px] text-center">Everything you need to build better decks, faster</h2>
+
+      <div class="grid grid-cols-1 nav:grid-cols-2 gap-[30px] nav:gap-[60px] mb-10 nav:mb-[60px] items-center">
+        <div>
+          <h3 class="font-heading text-2xl nav:text-[32px] font-semibold mb-4 text-brand">Prompt to slides</h3>
+          <p class="text-base nav:text-lg leading-[1.8] text-brand-muted">Describe what you need. Verso generates a full deck in seconds.</p>
+        </div>
+        <div class="bg-white rounded-2xl p-10 nav:p-[60px] border-2 border-brand-border min-h-[200px] nav:min-h-[300px] flex items-center justify-center">
+          <div class="w-full h-full bg-brand-bg rounded-xl flex items-center justify-center text-brand-light text-sm"></div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 nav:grid-cols-2 gap-[30px] nav:gap-[60px] mb-10 nav:mb-[60px] items-center">
+        <div class="nav:order-2">
+          <h3 class="font-heading text-2xl nav:text-[32px] font-semibold mb-4 text-brand">Brand-perfect design</h3>
+          <p class="text-base nav:text-lg leading-[1.8] text-brand-muted">Matches your existing themes, slidemasters, and colors.</p>
+        </div>
+        <div class="nav:order-1 bg-white rounded-2xl p-10 nav:p-[60px] border-2 border-brand-border min-h-[200px] nav:min-h-[300px] flex items-center justify-center">
+          <div class="w-full h-full bg-brand-bg rounded-xl flex items-center justify-center text-brand-light text-sm"></div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 nav:grid-cols-2 gap-[30px] nav:gap-[60px] mb-10 nav:mb-[60px] items-center">
+        <div>
+          <h3 class="font-heading text-2xl nav:text-[32px] font-semibold mb-4 text-brand">Iterate instantly</h3>
+          <p class="text-base nav:text-lg leading-[1.8] text-brand-muted">Refine any slide with follow-up prompts. Change tone, layout, content.</p>
+        </div>
+        <div class="bg-white rounded-2xl p-10 nav:p-[60px] border-2 border-brand-border min-h-[200px] nav:min-h-[300px] flex items-center justify-center">
+          <div class="w-full h-full bg-brand-bg rounded-xl flex items-center justify-center text-brand-light text-sm"></div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 nav:grid-cols-2 gap-[30px] nav:gap-[60px] mb-10 nav:mb-[60px] items-center">
+        <div class="nav:order-2">
+          <h3 class="font-heading text-2xl nav:text-[32px] font-semibold mb-4 text-brand">PowerPoint integration</h3>
+          <p class="text-base nav:text-lg leading-[1.8] text-brand-muted">Works directly inside PowerPoint. No switching between tools.</p>
+        </div>
+        <div class="nav:order-1 bg-white rounded-2xl p-10 nav:p-[60px] border-2 border-brand-border min-h-[200px] nav:min-h-[300px] flex items-center justify-center">
+          <div class="w-full h-full bg-brand-bg rounded-xl flex items-center justify-center text-brand-light text-sm"></div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 nav:grid-cols-2 gap-[30px] nav:gap-[60px] items-center">
+        <div>
+          <h3 class="font-heading text-2xl nav:text-[32px] font-semibold mb-4 text-brand">Enterprise ready</h3>
+          <p class="text-base nav:text-lg leading-[1.8] text-brand-muted">SOC 2 and GDPR compliant, SSO & MFA login. Your data stays yours.</p>
+        </div>
+        <div class="bg-white rounded-2xl p-10 nav:p-[60px] border-2 border-brand-border min-h-[200px] nav:min-h-[300px] flex items-center justify-center">
+          <div class="w-full h-full bg-brand-bg rounded-xl flex items-center justify-center text-brand-light text-sm"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Models Section -->
+  <section class="py-[60px] px-[30px] nav:py-20 nav:px-[60px] bg-white" id="models">
+    <div class="max-w-[1200px] mx-auto text-center">
+      <h2 class="font-display text-[36px] nav:text-[48px] font-normal leading-tight text-brand mb-10">Model performance at the core</h2>
+      <p class="text-lg leading-[1.8] text-brand-muted max-w-[900px] mx-auto mb-10">Our harnesses outperform competition on all tested benchmarks. We take pride in building AI tools that deliver value and efficiency gains. See for yourself, test our product for free.</p>
+      <div class="w-full max-w-[900px] mx-auto aspect-video bg-[#f0f0f0] rounded-2xl border-2 border-brand-border flex items-center justify-center text-brand-light text-sm"></div>
+    </div>
+  </section>
+
+  <CtaBanner />
+  <Footer />
+</Layout>
